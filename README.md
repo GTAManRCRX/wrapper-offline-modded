@@ -11,7 +11,7 @@ IF YOU WANT TO DOWNLOAD THE ORIGINAL VERSION, GET IT FROM THIS LINK: [Wrapper of
 ## Running
 This is the Linux version of Wrapper offline, therefore if you use Windows, you have to make your own build manually  
 ## Building  
-In order to build, use the `npm run build` command after you cloned this repository  
+In order to build, first enter  the `npm install` then the `npm run build` commands after you cloned this repository  
 ## Importing stuff  
 If you want to import videos and characters from other instances of Wrapper offline, open its folder and drag the "_SAVED" and "_ASSETS" folder into the Wrapper offline folder. If you have already made any videos or characters, this will not work. Please only import on a new install with no saved characters or videos, or take the folders in Wrapper offline out before dragging the old one in. If you want to import character IDs from the original LVM, you can click on CREATE A CHARACTER in the video list, scroll down to "Copy a character", and type in a character ID.
 
