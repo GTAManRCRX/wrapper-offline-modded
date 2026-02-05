@@ -12,6 +12,9 @@ This project is important for archival purposes, as the ability to use the legac
 IF YOU WANT TO DOWNLOAD THE ORIGINAL VERSION, GET IT FROM THE LINK BELOW  
 [Wrapper offline](https://github.com/wrapper-offline/wrapper-offline.git)
 
+## Running
+This is the Linux version of Wrapper offline therefore if you use Windows, you have to make your own build manually
+
 ## Downloads / Installation
 To install my forked version of Wrapper offline, you need to download it through the [releases page](https://github.com/GTAManRCRX/wrapper-offline-modded/releases/)
 
@@ -20,7 +23,7 @@ For support, the first thing you should do is to [read through the Wrapper offli
 Alternatively, if you can't find what you need, you can join the [Discord server](https://discord.gg/Kf7BzSw)    
 Joining the server is recommended, as there is a whole community that can help you out
 
-## Development
+## Building and testing
 To run Wrapper offline with a development server, first run this command:
 ```
 npm install
@@ -51,6 +54,7 @@ Name | Contribution
 [It'sJay](https://github.com/PoleyMagik) | Asset store archive, client modifications
 
 No members of the original GoAnimate Wrapper team are officially working on Offline, even if they have contributed. Some members of the original team have asked to not be given credit, and they have been removed
+
 
 
 
