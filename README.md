@@ -4,13 +4,17 @@
   <br/>
 </div>
 
-Wrapper offline is a program designed to provide readily obtainable, irrevocable access to GoAnimate's retired assets in the modern era. It achieves this by replicating the original API and asset servers entirely on the user's computer while providing a simplistic frontend to interact with them. This project is important for archival purposes, as the ability to use the legacy GoAnimate editor and themes would be far trickier without it
+Wrapper offline is a program designed to provide readily obtainable, irrevocable access to GoAnimate's retired assets in the modern era  
+It achieves this by replicating the original API and asset servers entirely on the user's computer while providing a simplistic frontend to interact with them  
+This project is important for archival purposes, as the ability to use the legacy GoAnimate editor and themes would be far trickier without it
 
 ## Downloads / Installation
 To install Wrapper offline, you need to download the releases listed in this fork
 
 ## Updates & Support
-For support, the first thing you should do is to [read through the Wrapper offline wiki](https://github.com/wrapper-offline/wrapper-offline/wiki), as it most likely has what you want to know. Alternatively, if you can't find what you need, you can join the [Discord server](https://discord.gg/Kf7BzSw). Joining the server is recommended, as there is a whole community that can help you out
+For support, the first thing you should do is to [read through the Wrapper offline wiki](https://github.com/wrapper-offline/wrapper-offline/wiki) as it most likely has what you want to know  
+Alternatively, if you can't find what you need, you can join the [Discord server](https://discord.gg/Kf7BzSw)  
+Joining the server is recommended, as there is a whole community that can help you out
 
 ## Development
 To run Wrapper offline with a development server, first run this command:
@@ -30,11 +34,11 @@ This is a ready-made version. You just need to run Wrapper offline in the folder
 Since I only have `Linux` installed, you need to build the `Windows` and the `macOS` versions separately
 
 ## License
-Most of this project is free/libre software[1] under the MIT license. You have the freedom to run, change, and share this as much as you want.
-FFmpeg is under the GNU GPLv2 license, which grants similar rights, but has some differences from MIT. Flash Player (`resources/plugins`) and GoAnimate's original assets (`resources/static`) are proprietary and do not grant you these rights, but if they did, this project wouldn't need to exist.
+Most of this project is free/libre software under the MIT license. You have the freedom to run, change, and share this as much as you want
+FFmpeg is under the GNU GPLv2 license, which grants similar rights, but has some differences from MIT. Flash Player (`resources/plugins`) and GoAnimate's original assets (`resources/static`) are proprietary and do not grant you these rights, but if they did, this project wouldn't need to exist
 
 ## Credits
-These are unaffiliated people that they haven't directly done anything for the project but still deserve credit for their things. Kinda like a shoutout but in a project's readme. ***Please do not contact them about Wrapper offline.***
+These are unaffiliated people that they haven't directly done anything for the project but still deserve credit for their things. Kinda like a shoutout but in a project's readme. ***Please do not contact them about Wrapper offline***
 
 Name | Contribution
 ---- | ----
@@ -42,8 +46,6 @@ Name | Contribution
 [VisualPlugin](https://github.com/Windows81) | GoAnimate Wrapper, character dump
 [It'sJay](https://github.com/PoleyMagik) | Asset store archive, client modifications
 
-No members of the original GoAnimate Wrapper team are officially working on Offline, even if they have contributed. Some members of the original team have asked to not be given credit, and they have been removed.
+No members of the original GoAnimate Wrapper team are officially working on Offline, even if they have contributed. Some members of the original team have asked to not be given credit, and they have been removed
 
-## Footnotes
-[1] - See <https://www.gnu.org/philosophy/free-sw.html> for a better definition of free software.
 
