@@ -10,7 +10,7 @@ IF YOU WANT TO DOWNLOAD THE ORIGINAL VERSION, GET IT FROM THE LINK BELOW
 [Wrapper offline](https://github.com/wrapper-offline/wrapper-offline.git)
 
 ## Running
-This is the Linux version of Wrapper offline, therefore if you use Windows, you have to make your own build manually  
+This is the Linux version of Wrapper offline therefore if you use Windows, you have to make your own build manually  
 ## Building  
 In order to build, first enter  the `npm install` then the `npm run build` commands after you cloned this repository  
 ## Importing stuff  
