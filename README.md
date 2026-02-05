@@ -8,6 +8,10 @@ Wrapper offline is a program designed to provide readily obtainable, irrevocable
 It achieves this by replicating the original API and asset servers entirely on the user's computer while providing a simplistic frontend to interact with them    
 This project is important for archival purposes, as the ability to use the legacy GoAnimate editor and themes would be far trickier without it
 
+## THIS IS A MODIFIED VERSION OF THE SOFTWARE!!!  
+IF YOU WANT TO DOWNLOAD THE ORIGINAL VERSION, GET IT FROM THE LINK BELOW  
+[Wrapper offline](https://github.com/wrapper-offline/wrapper-offline.git)
+
 ## Downloads / Installation
 To install my forked version of Wrapper offline, you need to download it through the [releases page](https://github.com/GTAManRCRX/wrapper-offline-modded/releases/)
 
@@ -47,6 +51,7 @@ Name | Contribution
 [It'sJay](https://github.com/PoleyMagik) | Asset store archive, client modifications
 
 No members of the original GoAnimate Wrapper team are officially working on Offline, even if they have contributed. Some members of the original team have asked to not be given credit, and they have been removed
+
 
 
 
