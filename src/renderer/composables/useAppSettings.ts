@@ -30,11 +30,6 @@ class AppSettings {
 		});
 	}
 
-	/**
-	 * returns a setting value from id
-	 * @param id setting id
-	 * @returns setting value
-	 */
 	get(id:string): boolean | string {
 		return this.settings[id];
 	}
