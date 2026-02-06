@@ -7,22 +7,15 @@ import fileUtil from "../utils/fileUtil.js";
 
 const group = new httpz.Group();
 
-/*
-redirects
-*/
 // go_full (tutorial)
 group.route("*", /\/videomaker\/full\/(\w+)\/tutorial$/, (req, res) => {
 	const theme = req.matches[1];
 	res.redirect(`/go_full?tray=${theme}&tutorial=0`);
 });
-// video list
 group.route("GET", "/dashboard/videos", (req, res) => {
 	res.redirect("/videos");
 });
 
-/*
-thumbs
-*/
 group.route("*", /\/file\/movie\/thumb\/([^/]+)$/, (req, res) => {
 	const id = req.matches[1];
 
@@ -39,9 +32,6 @@ group.route("*", /\/file\/movie\/thumb\/([^/]+)$/, (req, res) => {
 	}
 });
 
-/*
-info
-*/
 group.route("GET", "/api/movie/get_info", (req, res) => {
 	const id = req.query.id;
 	if (!id) {
@@ -56,10 +46,6 @@ group.route("GET", "/api/movie/get_info", (req, res) => {
 	}
 });
 
-/*
-list
-*/
-// movies
 group.route("GET", "/api/movie/list", (req, res) => {
 	const type = req.query.type;
 	const basePath = req.query.path;
@@ -110,9 +96,6 @@ group.route("GET", "/api/movie/list", (req, res) => {
 	res.json({ folder_path:folderPath, folders, movies });
 });
 
-/*
-rename folder
-*/
 group.route("GET", "/api/movie/rename_folder", (req, res) => {
 	const { new:newName, path } = req.query;
 	if (!newName) {
@@ -134,15 +117,9 @@ group.route("GET", "/api/movie/rename_folder", (req, res) => {
 	}
 });
 
-/*
-move folder
-*/
 group.route("POST", "/api/movie/move_selection", (req, res) => {
-	/** list of movie ids to move */
 	const movies:string[]|void = req.body.movies;
-	/** list of folder ids to move */
 	const movieFolders:string[]|void = req.body.movie_folders;
-	/** id of the parent folder to move to */
 	const newParentId:string|void = req.body.new_parent_id;
 
 	if ((!movies && !movieFolders) || !newParentId) {
@@ -172,12 +149,6 @@ group.route("POST", "/api/movie/move_selection", (req, res) => {
 	}
 });
 
-/*
-delete folder
-*/
-/*
-move folder
-*/
 group.route("GET", "/api/movie/delete_folder", (req, res) => {
 	const { path } = req.query;
 	if (!path) {
@@ -196,9 +167,6 @@ group.route("GET", "/api/movie/delete_folder", (req, res) => {
 	}
 });
 
-/*
-delete
-*/
 group.route("POST", "/api/movie/delete", async (req, res) => {
 	const idField = req.body.id as string;
 	if (typeof idField == "undefined") {
@@ -224,9 +192,6 @@ group.route("POST", "/api/movie/delete", async (req, res) => {
 	res.end()
 });
 
-/*
-upload
-*/
 group.route("POST", "/api/movie/upload", (req, res) => {
 	const file = req.files.import;
 	const isStarter = req.body.is_starter;
@@ -254,9 +219,6 @@ group.route("POST", "/api/movie/upload", (req, res) => {
 	});
 });
 
-/*
-pack
-*/
 group.route(
 	"*",
 	/^\/file\/movie\/file\/([^/]+)|\/goapi\/getMovie\/$/,
@@ -297,9 +259,6 @@ group.route(
 	}
 );
 
-/*
-save
-*/
 group.route("POST", ["/goapi/saveMovie/", "/goapi/saveTemplate/"], (req, res) => {
 	const zipField = req.body.body_zip;
 	if (typeof zipField == "undefined") {
