@@ -1,5 +1,6 @@
 <style lang="css" scoped>
 #full_page_container {
+	background-color: black;
 	padding: 0;
 	width: 100%;
 	height: 100%;
