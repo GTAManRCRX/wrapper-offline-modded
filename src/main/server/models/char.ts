@@ -16,9 +16,6 @@ export default class CharModel {
 	static folder = Directories.asset;
 	static baseThumbUrl = path.join(Directories.static, process.env.CHAR_BASE_URL);
 
-	/**
-	 * Tries to find a character in the _SAVED folder. If there's no match, it tries to find it in the character dump.
-	 */
 	static charXml(id:string): Buffer {
 		try {
 			try { // custom characters
@@ -43,12 +40,6 @@ export default class CharModel {
 		}
 	}
 
-	/**
-	 * saves the character and its metadata
-	 * @param xml a buffer of a character xml
-	 * @param info character metadata
-	 * @returns char id
-	 */
 	static save(xml:Buffer, info:Partial<Char>): string {
 		// save asset info
 		info.id ||= generateId();
@@ -69,19 +60,10 @@ export default class CharModel {
 		return info.id;
 	}
 
-	/**
-	 * saves a character thumbnail
-	 * @param id the character id
-	 * @param thumb a thumbnail of the character in PNG format
-	 */
 	static saveThumb(id:string, thumb:Buffer) {
 		fs.writeFileSync(path.join(this.folder, `${id}.png`), thumb);
 	}
 
-	/**
-	 * checks if a character exists
-	 * @returns does it exist?
-	 */
 	static exists(id:string): boolean {
 		try {
 			this.charXml(id);
@@ -91,20 +73,12 @@ export default class CharModel {
 		}
 	}
 
-	/**
-	 * Looks for a theme in a character XML.
-	 * @param charXml XML of the character to save
-	 * @returns theme id
-	 */
 	static getThemeId(charXml:Buffer) {
 		const beg = charXml.indexOf(`theme_id="`) + 10;
 		const end = charXml.indexOf(`"`, beg);
 		return charXml.subarray(beg, end).toString();
 	}
 
-	/**
-	 * checks if a cc_theme is a skeleton theme
-	 */
 	static isSkeleton(themeId:string) {
 		switch (themeId) {
 			case "cctoonadventure":
