@@ -32,6 +32,13 @@ html.dark .app_setting {
 html.dark .app_setting p {
 	color: #878b92;
 }
+
+html.dark .setting {
+  background: #222222;
+  border-color: #444444;
+  color: #eeeeee;
+}
+
 </style>
 
 <script setup lang="ts">
@@ -72,6 +79,11 @@ function optionSelected(e:MouseEvent) {
 function set(strValue:string) {
 	let value = props.binary ? strValue == "true" : strValue;
 	console.log(value);
+
+	if (props.id === "isWide") {
+		localStorage.setItem("isWide_active", strValue);
+	}
+
 	if (props.local) {
 		if (props.id == "darkMode") {
 			if (value == true) {
