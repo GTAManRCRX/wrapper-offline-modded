@@ -21,11 +21,6 @@ function getThemeList(): any {
 	});
 }
 
-/**
- * returns the unsorted themelist
- * @param ccFilter return only cc themes
- * @returns list of themes
- */
 export async function useThemeList(ccFilter = false) : Promise<Theme[]> {
 	const themes = await getThemeList();
 	let returnArray = [];
@@ -38,11 +33,6 @@ export async function useThemeList(ccFilter = false) : Promise<Theme[]> {
 	return returnArray;
 };
 
-/**
- * returns the themelist sorted by column
- * @param ccFilter return only cc themes
- * @returns list of theme columns
- */
 export async function useSortedList(ccFilter = false) : Promise<Theme[][]> {
 	const themes = await getThemeList();
 	let returnArray:Theme[][] = [];
