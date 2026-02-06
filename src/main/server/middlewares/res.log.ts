@@ -1,8 +1,5 @@
 import type { Request, Response } from "@octanuary/httpz";
 
-/**
- * logs to the console
- */
 export default async function resLog(
 	req:Request,
 	res:Response,
