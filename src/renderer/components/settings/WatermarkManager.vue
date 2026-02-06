@@ -105,7 +105,6 @@ import useAppSettings from "../../composables/useAppSettings";
 
 type Watermark = {
 	id: string,
-	/** thumbnail path */
 	thumbnail: string
 };
 
@@ -186,7 +185,7 @@ async function wmReplace_click(id:string) {
 }
 
 async function wmDelete_click(id:string) {
-	if (!confirm("ya sure")) {
+	if (!confirm("Are you sure that you want to remove the watermark?")) {
 		return;
 	}
 	const body = new FormData();
