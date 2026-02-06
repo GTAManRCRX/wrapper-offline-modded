@@ -7,8 +7,8 @@ import { join } from "path";
 import settings from "./storage/settings";
 import { startAll } from "./server/index";
 
-const customDataPath = join(process.cwd(), "resources", "app", "data");
-app.setPath("userData", customDataPath);
+const customTempPath = join(__dirname, "temp");
+app.setPath("userData", customTempPath);
 
 const IS_DEV = app.commandLine.getSwitchValue("dev").length > 0;
 
@@ -30,15 +30,15 @@ if (settings.saveLogFiles) {
 let pluginName:string;
 switch (process.platform) {
 	case "win32": {
-		pluginName = "/extensions/pepflashplayer.dll";
+		pluginName = "extensions/pepflashplayer.dll";
 		break;
 	}
 	case "darwin": {
-		pluginName = "/extensions/PepperFlashPlayer.plugin";
+		pluginName = "extensions/PepperFlashPlayer.plugin";
 		break;
 	}
 	case "linux": {
-		pluginName = "/extensions/libpepflashplayer.so";
+		pluginName = "extensions/libpepflashplayer.so";
 		app.commandLine.appendSwitch("no-sandbox");
 		break;
 	}
