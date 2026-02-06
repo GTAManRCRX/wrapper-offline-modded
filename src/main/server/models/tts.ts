@@ -4,20 +4,34 @@ import https from "https";
 import voiceList from "../data/voices.json";
 import { Readable } from "stream";
 
-/**
- * uses tts demos to generate tts
- * @param voiceName voice name
- * @param text text
- */
 export default function processVoice(
 	voiceName:string,
-	text:string
+	rawText:string
 ): Promise<Buffer | Readable> {
 	return new Promise(async (res, rej) => {
 		const voice = voiceList.voices[voiceName];
 		if (typeof voice == "undefined") {
 			return rej("Requested voice is not supported");
 		}
+
+		let flags: { [key: string]: string } = {};
+		const pieces = rawText.split("#%");
+		let text = pieces.pop()?.substring(0, 300) || "";
+		for (const rawFlag of pieces) {
+			const index = rawFlag.indexOf("=");
+			if (index == -1) continue;
+			const name = rawFlag.substring(0, index);
+			const value = rawFlag.substring(index + 1);
+			flags[name] = value;
+		}
+
+		for (const rawFlag of pieces) {
+            		const index = rawFlag.indexOf("=");
+            		if (index == -1) continue;
+            			const name = rawFlag.substring(0, index);
+            			const value = rawFlag.substring(index + 1);
+            		flags[name] = value;
+        	}
 
 		try {
 			switch (voice.source) {
@@ -437,21 +451,16 @@ export default function processVoice(
 	});
 };
 
-/**
- * converts the waaa's to make it sound old (voicehub method)
- * @param text text input
- * @param voiceArg voice argument
- */
 async function convertVoiceforgeText(
 	text:string,
 	voiceArg:string
 ): Promise<string> {
-	return new Promise((resolve) => {
+	return new Promise((res) => {
 		let inputText = text.toLowerCase();
 		// still gotta thank Jyvee for the actual method
 		// theres also a reason why Jyvee randomly shared the method but its a personal reason
 		if (!inputText.includes("aaaaa")) {
-			return resolve(text);
+			return res(text);
 		}
 		let pattern = /(?:gr|[a-z])a{2,}([a-z]?)/g;
 		let question = /\?/g;
@@ -642,7 +651,7 @@ async function convertVoiceforgeText(
 				}
 			}
 			else {
-				return resolve(text);
+				return res(text);
 			}
 			let xmlText = `<phoneme ph="${voiceValues.join(" ")}">Cepstral</phoneme>`;
 			let modifiedText = inputText.replace(match, xmlText);
@@ -651,7 +660,7 @@ async function convertVoiceforgeText(
 			let modifiedComma = modifiedQuestion.replace(",", ", ;");
 			let modifiedPeriod = modifiedComma.replace(".", ". ,");
 			text = modifiedPeriod;
-			return resolve(text);
+			return res(text);
 		}
 	})
 }
