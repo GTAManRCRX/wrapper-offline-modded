@@ -1,6 +1,6 @@
 export default {
 	"asset": {
-		// list of "flat" asset types (bg, holdable, video, bgmusic)
+
 		"flat_type_map": {
 			"bgmusic": "Music",
 			"soundeffect": "Sound effect",
@@ -24,8 +24,8 @@ export default {
 		},
 		"actions": {
 			"movie_delete_confirm": {
-				"sing": "Are you sure you want to delete this movie? It cannot be recovered.",
-				"plr": "Are you sure you want to delete these movies? They cannot be recovered.",
+				"sing": "Are you sure you want to delete this movie? It cannot be recovered",
+				"plr": "Are you sure you want to delete these movies? They cannot be recovered",
 			}
 		}
 	}
