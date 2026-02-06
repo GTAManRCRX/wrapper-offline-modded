@@ -28,9 +28,6 @@ class LocalSettings {
 		return this._instance;
 	}
 
-	/**
-	 * sets a setting in localStorage to its current value
-	 */
 	private saveSetting(id:keyof typeof LocalSettings.instance.settings) {
 		localStorage.setItem(id, this.settings[id].toString());
 	}
