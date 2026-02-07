@@ -37,47 +37,8 @@ You can build a full copy of Wrapper offline on all platforms. This command buil
 ```
 npm run package
 ```
-When you build for other environments, make sure you install the appropriate modules for the target. For this, enter the /dist directory and type: 
-```
-npm install --os=targetos --cpu=targetarch --no-package-lock
-```
-## WARNING: You can't build x86 binaries due to sharp errors
 
-The command above will NEVER work, because you NEED to specify the target. Here is a small guide, how to specify:  
-
-Windows x64
-```
-npm install --os=win32 --cpu=x64 --no-package-lock
-```
-
-Linux x64
-```
-npm install --os=linux --cpu=x64 --no-package-lock
-```
-
-Darwin (macOS) x64
-```
-npm install --os=darwin --cpu=x64 --no-package-lock
-```
-Then go back to the source code directory and package with one of the following commands:
-
-Windows x64
-```
-npx electron-packager dist --platform=win32 --arch=x64
-```
-
-Linux x64
-```
-npx electron-packager dist --platform=linux --arch=x64
-```
-
-Darwin (macOS) x64
-```
-npx electron-packager dist --platform=darwin --arch=x64
-```
-
-This is a ready-made version. You just need to run Wrapper offline in the folder the package creator just made based on your computer's architecture    
-Since I only have `Linux` installed, you need to build the `Windows` and the `macOS` versions separately
+This is a ready-made version. You just need to run Wrapper offline in the folder the package creator just made based on your computer's architecture
 
 ## License
 Most of this project is free/libre software under the MIT license. You have the freedom to run, change, and share this as much as you want
@@ -93,6 +54,7 @@ Name | Contribution
 [It'sJay](https://github.com/PoleyMagik) | Asset store archive, client modifications
 
 No members of the original GoAnimate Wrapper team are officially working on Offline, even if they have contributed. Some members of the original team have asked to not be given credit, and they have been removed
+
 
 
 
