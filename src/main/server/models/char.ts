@@ -18,10 +18,9 @@ export default class CharModel {
 
 	static charXml(id:string): Buffer {
 		try {
-			try { // custom characters
+			try {
 				return fs.readFileSync(path.join(this.folder, `${id}.xml`));
-			} catch (err) { // stock characters
-				console.log(err);
+			} catch (err) {
 				const nId = (id.slice(0, -3) + "000").padStart(9, "0");
 				const chars = fs.readFileSync(path.join(this.baseThumbUrl, `${nId}.txt`));
 
@@ -41,11 +40,10 @@ export default class CharModel {
 	}
 
 	static save(xml:Buffer, info:Partial<Char>): string {
-		// save asset info
+
 		info.id ||= generateId();
 		Database.insert("assets", info as Char);
 
-		// fix handheld props for v2 cc themes by inserting version="2.0"
 		if (!this.isSkeleton(info.themeId) && xml.indexOf("version=\"2.0\"") == -1) {
 			const end = xml.indexOf(">", xml.indexOf("<cc_char"));
 			xml = Buffer.concat([
@@ -55,7 +53,6 @@ export default class CharModel {
 			]);
 		}
 
-		// save the file
 		fs.writeFileSync(path.join(this.folder, `${info.id}.xml`), xml);
 		return info.id;
 	}
