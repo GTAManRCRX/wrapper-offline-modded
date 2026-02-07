@@ -41,15 +41,9 @@ When you build for other environments, make sure you install the appropriate mod
 ```
 npm install --os=targetos --cpu=targetarch --no-package-lock
 ```
-## WARNING: You can't build on Linux x86 due to sharp binaries being unavailable.  
-And for macOS x86 also because Apple killed x86 support
+## WARNING: You can't build x86 binaries due to sharp errors
 
-The command above will NEVER work, because you NEED to specify the target. Here is a small guide, how to specify  
-
-Windows x86
-```
-npm install --os=win32 --cpu=ia32 --no-package-lock
-```
+The command above will NEVER work, because you NEED to specify the target. Here is a small guide, how to specify:  
 
 Windows x64
 ```
@@ -65,16 +59,7 @@ Darwin (macOS) x64
 ```
 npm install --os=darwin --cpu=x64 --no-package-lock
 ```
-
-After you installed the appropriate modules, go back to the root folder of the source code, and type this  
-
-Windows x86
-```
-npx electron-packager dist --platform=win32 --arch=ia32
-```
-
-## WARNING: You will need the x86 version of Clean Flash Player 34.0.0.137 for the x86 release!
-[Clean Flash Player 34.0.0.137 for Windows download](https://github.com/darktohka/clean-flash-builds/releases/tag/v1.3)
+Then go back to the source code directory and package with one of the following commands:
 
 Windows x64
 ```
@@ -108,6 +93,7 @@ Name | Contribution
 [It'sJay](https://github.com/PoleyMagik) | Asset store archive, client modifications
 
 No members of the original GoAnimate Wrapper team are officially working on Offline, even if they have contributed. Some members of the original team have asked to not be given credit, and they have been removed
+
 
 
 
