@@ -41,7 +41,7 @@ When you build for other environments, make sure you install the appropriate mod
 ```
 npm install --os=targetos --cpu=targetarch --no-package-lock
 ```
-## WARNING: You can't build on Linux x86 due to sharp binaries being unavailable  
+## WARNING: You can't build on Linux x86 due to sharp binaries being unavailable. And for macOS x86 also because Apple killed x86 support
 
 The command above will NEVER work, because you NEED to specify the target. Here is a small guide, how to specify  
 
@@ -104,6 +104,7 @@ Name | Contribution
 [It'sJay](https://github.com/PoleyMagik) | Asset store archive, client modifications
 
 No members of the original GoAnimate Wrapper team are officially working on Offline, even if they have contributed. Some members of the original team have asked to not be given credit, and they have been removed
+
 
 
 
