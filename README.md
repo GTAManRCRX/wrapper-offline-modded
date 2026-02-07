@@ -74,7 +74,7 @@ npx electron-packager dist --platform=win32 --arch=ia32
 ```
 
 ## WARNING: You will need the x86 version Clean Flash Player 34.0.0.137 for the x86 release!
-[Clean Flash Player 34.0.0.137 for Windows download](https://github.com/darktohka/clean-flash-builds/releases/tag/v1.3))
+[Clean Flash Player 34.0.0.137 for Windows download](https://github.com/darktohka/clean-flash-builds/releases/tag/v1.3)
 
 Windows x64
 ```
@@ -108,6 +108,7 @@ Name | Contribution
 [It'sJay](https://github.com/PoleyMagik) | Asset store archive, client modifications
 
 No members of the original GoAnimate Wrapper team are officially working on Offline, even if they have contributed. Some members of the original team have asked to not be given credit, and they have been removed
+
 
 
 
