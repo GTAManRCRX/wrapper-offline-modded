@@ -7,9 +7,8 @@ export default function openPlayerWindow(movieId: string) {
     const videoHeight = isWide ? Math.round(width / (16 / 9)) : Math.round(width / (14 / 9));
 
     const basePadding = isWide ? 26 : 26;
-    const framePadding = basePadding;
 
-    const height = videoHeight + framePadding;
+    const height = videoHeight + basePadding;
 
     const left = Math.round((screen.availWidth - width) / 2);
     const top = Math.round((screen.availHeight - height) / 2);
