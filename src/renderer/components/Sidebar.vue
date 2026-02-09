@@ -370,12 +370,29 @@ function watchWidth() {
 	);
 }
 
-async function charInput_input(e:InputEvent) {
+async function charInput_input(e: Event) {
 	const target = e.currentTarget as HTMLInputElement;
-	const xmlData = await target.files[0].text();
-	tempStorage.store("charXmlData", xmlData);
-	const themeId = extractCharThemeId(xmlData);
-	router.push("/characters/" + themeId);
+	if (!target.files || target.files.length === 0) return;
+
+	const formData = new FormData();
+	formData.append("import", target.files[0]);
+
+	try {
+		const response = await fetch(`${apiServer}/api/char/upload`, {
+			method: "POST",
+			body: formData
+		});
+
+		if (response.ok) {
+    			const data = await response.json();
+			pendingRefresh.value = true;
+    			router.push("/characters/" + data.themeId).then(() => {
+        		if (target) target.value = "";
+    		});
+	}
+	} catch (err) {
+		console.error("Import error:", err);
+	}
 }
 
 async function movieInput_input(e:InputEvent) {
