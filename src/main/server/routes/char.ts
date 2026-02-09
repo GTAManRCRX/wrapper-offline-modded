@@ -112,7 +112,7 @@ group.route("POST", "/goapi/saveCCThumbs/", (req, res) => {
 group.route("*", "/api/char/upload", (req, res) => {
 	const file = req.files.import;
 	if (!file) {
-		return res.status(400).json({ msg: "No file" });
+		return res.status(400).json({ msg: "No file uploaded" });
 	} else if (file.mimetype !== "text/xml") {
 		return res.status(400).json({ msg: "Character is not an XML" });
 	}
@@ -126,13 +126,12 @@ group.route("*", "/api/char/upload", (req, res) => {
 		themeId: CharModel.getThemeId(buffer)
 	};
 	try {
-		CharModel.save(buffer, meta);
-		fs.unlinkSync(path);
-		const url = `/cc_browser?themeId=${meta.themeId}`;
-		res.redirect(url);
+    		CharModel.save(buffer, meta); 
+    		fs.unlinkSync(path);
+    		res.json({ status: "ok", id: meta.id, themeId: meta.themeId }); 
 	} catch (e) {
-		console.error("Error uploading character:", e);
-		res.status(500).end();
+    		console.error("Error uploading character:", e);
+    		res.status(500).json({ status: "error" });
 	}
 });
 
