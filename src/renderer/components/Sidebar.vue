@@ -374,22 +374,23 @@ async function charInput_input(e: Event) {
 	const target = e.currentTarget as HTMLInputElement;
 	if (!target.files || target.files.length === 0) return;
 
-	const formData = new FormData();
-	formData.append("import", target.files[0]);
+	const charData = new FormData();
+	charData.append("import", target.files[0]);
 
 	try {
 		const response = await fetch(`${apiServer}/api/char/upload`, {
 			method: "POST",
-			body: formData
+			body: charData
 		});
 
 		if (response.ok) {
-    			const data = await response.json();
+			const data = await response.json();
 			pendingRefresh.value = true;
-    			router.push("/characters/" + data.themeId).then(() => {
-        		if (target) target.value = "";
-    		});
-	}
+			router.push("/").then(() => {
+				router.push("/characters/" + data.themeId);
+				if (target) target.value = "";
+			});
+		}
 	} catch (err) {
 		console.error("Import error:", err);
 	}
