@@ -1,7 +1,3 @@
-/*
-feel so clean like a money machine
-*/
-
 import type { Asset } from "../models/asset";
 import AssetModel from "../models/asset";
 import { extensions, FileExtension, fromFile, mimeTypes } from "file-type";
@@ -23,9 +19,6 @@ Ffmpeg.setFfmpegPath(ffmpegPath);
 Ffmpeg.setFfprobePath(ffprobePath);
 const group = new httpz.Group();
 
-/*
-delete
-*/
 group.route("POST", "/api_v2/asset/delete/", (req, res) => {
 	const id = req.body.data.id || req.body.data.starter_id;
 	if (typeof id == "undefined") {
@@ -48,10 +41,6 @@ group.route("POST", "/api_v2/asset/delete/", (req, res) => {
 		res.status(500).json({ status:"error" });
 	}
 });
-
-/*
-list
-*/
 group.route("GET", "/api/asset/list", (req, res) => {
 	const filter = {
 		type: ["bg", "prop", "sound"] as any as Asset["type"]
@@ -62,7 +51,6 @@ group.route("POST", "/api_v2/assets/imported", (req, res) => {
 	if (!req.body.data.type) {
 		return res.status(400).json({msg:"Expected data.type on request body."});
 	}
-	// filter out video props
 	if (req.body.data.type == "prop") {
 		req.body.data.subtype ||= "0";
 	}
@@ -72,8 +60,6 @@ group.route("POST", "/api_v2/assets/imported", (req, res) => {
 	};
 	if (req.body.data.subtype) filters.subtype = req.body.data.subtype;
 
-	// what's even the point of this if it still uses an xml
-	// it's dumb
 	res.json({
 		status: "ok",
 		data: {
@@ -107,57 +93,34 @@ group.route("POST", "/goapi/getUserAssetsXml/", (req, res) => {
 		themeId,
 		type: "char"
 	};
-	// just a little workaround i did for getting character info when i was implementing the cc embed in the vm
 	if (req.body.assetId && req.body.assetId !== "null") filters.id = req.body.assetId;
 
 	res.setHeader("Content-Type", "application/xml");
 	res.end(AssetModel.list(filters, true));
 });
-
-/*
-load
-*/
 group.route("*", /^\/(assets|goapi\/getAsset)\/([\S]*)$/, (req, res, next) => {
-	let id:string | void;
-	switch (req.method) {
-		case "GET":
-			id = req.matches[2];
-			break;
-		case "POST":
-			id = req.body.assetId;
-			break;
-		default:
-			next();
-			return;
-	}
-	if (!id) {
-		return res.status(400).end();
-	}
-
+	let id = req.method === "GET" ? req.matches[2] : req.body.assetId;
+	if (!id) return res.status(400).end();
 	try {
-		const ext = (id.split(".")[1] || "xml") as FileExtension;
-
-		const extensionIndex = [...extensions].indexOf(ext);
-		if (extensionIndex < 0) {
-			return res.status(400).end();
-		}
-		const mime = [...mimeTypes][extensionIndex];
+		const ext = path.extname(id).toLowerCase();
+		const mimeTypes = {
+			".png": "image/png",
+			".jpg": "image/jpeg",
+			".swf": "application/x-shockwave-flash",
+			".mp3": "audio/mpeg"
+		};
+		const mime = mimeTypes[ext] || "application/octet-stream";
+		res.writeHead(200, {
+			"Content-Type": mime,
+			"X-Content-Type-Options": "nosniff",
+			"Cache-Control": "no-cache"
+		});
 		const readStream = AssetModel.load(id, false);
-		res.setHeader("Content-Type", mime);
 		readStream.pipe(res);
 	} catch (e) {
-		if (e == "404") {
-			return res.status(404).end();
-		}
-		console.error(req.parsedUrl.pathname, "failed. Error:", e);
-		res.status(500).end();
+		if (!res.writableEnded) res.status(404).end();
 	}
 });
-
-/*
-info
-*/
-// get
 group.route("POST", "/api_v2/asset/get", (req, res) => {
 	const id = req.body.data?.id ?? req.body.data?.starter_id;
 	if (!id) {
@@ -166,7 +129,6 @@ group.route("POST", "/api_v2/asset/get", (req, res) => {
 
 	try {
 		const info = AssetModel.getInfo(id);
-		// add stuff that will never be useful in an offline lvm clone because the lvm needs it
 		const extraInfo = {
 			share: {type:"none"},
 			published: ""
@@ -185,7 +147,6 @@ group.route("POST", "/api_v2/asset/get", (req, res) => {
 });
 group.route("POST", "/goapi/getAssetTags", (_, r) => r.json([]));
 group.route("POST", "/goapi/getLatestAssetId", (_, r) => r.end(0));
-// update
 group.route("POST", "/api_v2/asset/update/", (req, res) => {
 	const id = req.body.data?.id ?? req.body.data?.starter_id ?? null;
 	const title = req.body.data?.title ?? null;
@@ -212,22 +173,16 @@ group.route("POST", "/api_v2/asset/update/", (req, res) => {
 		res.status(500).json({status:"error"});
 	}
 });
-
-/*
-save
-*/
 group.route("POST", "/api/asset/upload", async (req, res) => {
 	const file = req.files.import;
 	if (typeof file === "undefined" || !req.body.type || !req.body.subtype) {
 		return res.status(400).json({msg:"Missing required parameters."});
 	}
 
-	// get the filename and extension
 	const { filepath } = file;
 	const filename = path.parse(file.originalFilename).name;
 	const ext = (await fromFile(filepath))?.ext;
 	if (typeof ext === "undefined") {
-		// filetype couldn't be determined
 		return res.status(400).json({msg:"File type could not be determined."});
 	}
 
@@ -237,27 +192,22 @@ group.route("POST", "/api/asset/upload", async (req, res) => {
 		title: req.body.name || filename
 	}, stream;
 
-	// validate the file type
 	const ok = info.subtype == "video" ? "video" : info.type;
 	if ((fileTypes[ok] || []).indexOf(ext) < 0) {
 		return res.status(400).json({msg:"Invalid file type."});
 	}
-
 	try {
 		switch (info.type) {
-			// these two are very similar so they can be merged
 			case "bg": {
 				if (info.type == "bg" && ext != "swf") {
 					stream = sharp(filepath)
 						.resize(550, 354, { fit: "fill" })
 						.toFormat("png");
-					// i dont kown
 				} else {
 					stream = fs.createReadStream(filepath);
 				}
 				stream.pause();
-	
-				// save asset
+
 				info.id = await AssetModel.save(stream, ext == "swf" ? ext : "png", info);
 				break;
 			}
@@ -267,7 +217,7 @@ group.route("POST", "/api/asset/upload", async (req, res) => {
 				} else {
 					stream = fs.createReadStream(filepath);
 				}
-				// save it to a tempfile so we can get the mp3 duration
+
 				const temppath = tempfile(".mp3");
 				const writeStream = fs.createWriteStream(temppath);
 				await new Promise(async (resolve, reject) => {
@@ -285,15 +235,12 @@ group.route("POST", "/api/asset/upload", async (req, res) => {
 			}
 			case "prop": {
 				if (info.subtype == "video") {
-					// get the height and width from the original video
 					const asyncFfprobe = promisify(ffprobe);
 					const data = await asyncFfprobe(filepath) as FfprobeData;
 					info.width = data.streams[0].width || data.streams[1].width;
 					info.height = data.streams[0].height || data.streams[1].width;
 
 					const temppath = tempfile(".flv");
-					// convert the video to an flv
-					// ffmpeg will infer the flv file type from the temppath
 					await new Promise(async (resolve, rej) => {	
 						Ffmpeg(filepath)
 							.output(temppath)
@@ -303,10 +250,6 @@ group.route("POST", "/api/asset/upload", async (req, res) => {
 					});
 					info.id = await AssetModel.save(temppath, "flv", info);
 
-					// AssetModel.save doesn't have thumbnail support so we'll save it here while we're at it
-					//
-					// define the command outside the promise because for whatever reason
-					// typescript does not like it when i use discriminated unions in callbacks
 					const command = Ffmpeg(filepath)
 						.seek("0:00")
 						.output(path.join(AssetModel.folder, info.id.slice(0, -3) + "png"))
@@ -319,7 +262,6 @@ group.route("POST", "/api/asset/upload", async (req, res) => {
 					});
 				} else if (info.subtype == "0") {
 					let { ptype } = req.body;
-					// verify the prop type
 					switch (ptype) {
 						case "placeable":
 						case "wearable":
@@ -360,7 +302,7 @@ group.route("POST", "/goapi/saveSound/", async (req, res) => {
 		const buffer = Buffer.from(req.body.bytes, "base64");
 		fs.writeFileSync(filepath, buffer);
 	} else {
-		// read the file
+
 		filepath = req.files.Filedata.filepath;
 		ext = (await fromFile(filepath))?.ext;
 		if (!ext) {
