@@ -9,7 +9,6 @@ class DirUtil {
 			this.userData,
 			this.asset,
 			this.cache,
-			this.export,
 			this.log,
 			this.saved,
 		];
@@ -41,10 +40,6 @@ class DirUtil {
 
 	get cache() {
 		return join(this.userData, process.env.CACHE_FOLDER);
-	}
-
-	get export() {
-		return join(this.userData, process.env.EXPORT_FOLDER);
 	}
 
 	get log() {
