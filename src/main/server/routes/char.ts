@@ -111,7 +111,7 @@ group.route("POST", "/goapi/saveCCThumbs/", (req, res) => {
 
 group.route("*", "/api/char/upload", (req, res) => {
 	const charFile = req.files.import;
-	if (!charFile) return res.status(400).json({ msg: "No file" });
+	if (!charFile) return res.status(400).json({ msg: "No file uploaded" });
 
 	const charTitle = path.parse(charFile.originalFilename || "").name || "Untitled";
 	const charPath = charFile.filepath;
