@@ -54,7 +54,7 @@ onUnmounted(() => {
 	<div class="app_info_modal">
 		<Popup class="app_info_popup">
 			<template #small-heading>Wrapper offline</template>
-			<template #large-heading>About Wrapper</template>
+			<template #large-heading>About</template>
 
 			<div class="about">
 				<img src="/img/logo_icon.svg"/>
