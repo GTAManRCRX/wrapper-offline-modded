@@ -396,30 +396,48 @@ async function charInput_input(e: Event) {
 	}
 }
 
-async function movieInput_input(e:InputEvent) {
+async function movieInput_input(e: Event) {
 	const target = e.currentTarget as HTMLInputElement;
+	if (!target.files || target.files.length === 0) return;
+
 	const zipFile = target.files[0];
 	const isStarter = movieUploadType.value == "starter";
 	const body = new FormData();
 	body.append("import", zipFile);
+	
 	if (isStarter) {
-		body.append("is_starter", "");
+		body.append("is_starter", "1");
 	}
+
 	const res = await fetch(apiServer + "/api/movie/upload", {
 		method: "POST",
 		body
 	});
-	const json = await res.json();
-	switch (localSettings.onMovieUpload) {
+
+	if (res.ok) {
+		const json = await res.json();
+		target.value = ""; 
+
+		pendingRefresh.value = true;
+
+		switch (localSettings.onMovieUpload) {
 		case "edit":
 			router.push("/movies/edit/" + json.id);
 			break;
+
 		case "play":
 			openPlayerWindow(json.id);
+			router.push("/temp").then(() => {
+				router.push(isStarter ? "/starters" : "/movies");
+			});
 			break;
+
 		case "none":
 		default:
-			pendingRefresh.set(true);
+			router.push("/temp").then(() => {
+				router.push(isStarter ? "/starters" : "/movies");
+			});
+		}
 	}
 }
 
@@ -505,11 +523,11 @@ defineExpose({ slideMode, width });
 						</button>
 					</li>
 				</template>
-				<RouterLink to="/movies/create" class="dropdown_item">Create a video</RouterLink>
+				<RouterLink to="/movies/create" class="dropdown_item">Make a video</RouterLink>
 				<DropdownSeparator/>
-				<DropdownItem @click="charInput.click()">Upload a character</DropdownItem>
-				<DropdownItem @click="movieUpload_click()">Upload a video</DropdownItem>
-				<DropdownItem @click="starterUpload_click()">Upload a starter</DropdownItem>
+				<DropdownItem @click="charInput.click()">Import a character</DropdownItem>
+				<DropdownItem @click="movieUpload_click()">Import a video</DropdownItem>
+				<DropdownItem @click="starterUpload_click()">Import a starter</DropdownItem>
 			</Dropdown>
 			<div class="spacer"></div>
 			<li class="link">
@@ -550,7 +568,7 @@ defineExpose({ slideMode, width });
 						</a>
 					</li>
 					<div class="divider"></div>
-					<li class="link" title="Need help with Wrapper? Chat with the original developers on Discord!">
+					<li class="link" title="Need help with Wrapper offline? Chat with the original developers on Discord!">
 						<a href="javascript:window.appWindow.openDiscord();">
 							<i class="ico speech"></i>
 							<div class="link_text">Discord</div>
