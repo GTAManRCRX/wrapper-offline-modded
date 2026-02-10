@@ -12,10 +12,10 @@
 	"CHAR_BASE_URL": "/characters",
 	"THUMB_BASE_URL": "/thumbnails",
 
-	"ASSET_FOLDER": "./_ASSETS",
-	"CACHE_FOLDER": "./_CACHE",
-	"LOG_FOLDER": "./_LOGS",
-	"SAVED_FOLDER": "./_SAVED",
+	"ASSET_FOLDER": "./ASSETS",
+	"CACHE_FOLDER": "./CACHE",
+	"LOG_FOLDER": "./LOGS",
+	"SAVED_FOLDER": "./SAVED",
 	
-	"WRAPPER_VER": "2.1.1-MODDED"
+	"WRAPPER_VER": "2.1.2"
 }
