@@ -14,12 +14,12 @@ export default function openPlayerWindow(movieId: string) {
                       (navigator.platform.indexOf('Win') !== -1);
 
     if (isWindows) {
-        width += 3;
+        width += 4;
 
         if (isWide) {
-            height += 40; 
+            height += 42; 
         } else {
-            height += 40; 
+            height += 42; 
         }
     }
 
