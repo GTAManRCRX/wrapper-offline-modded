@@ -16,7 +16,9 @@
 	font-weight: normal;
 	margin: 0 0 9px;
 	display: block;
+	text-align: center;
 }
+
 .tab_selector .tab {
 	width: 550px;
 }
@@ -26,11 +28,25 @@ html.dark .tab_selector .tab_col {
 }
 
 @media (max-width: 800px) {
+	.popup_container.settings_popup .contents {
+		width: 90vw;
+		height: auto;
+	}
 	.tab_selector {
 		flex-direction: column;
 	}
+	.tab_selector .tab_col {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 10px;
+	}
 	.tab_selector .tab_col .btn {
 		display: inline-block;
+	}
+	.tab_selector .tab {
+		width: 100%;
 	}
 }
 </style>
