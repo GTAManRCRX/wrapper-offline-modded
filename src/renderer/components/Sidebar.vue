@@ -8,6 +8,20 @@
 	flex-shrink: 0;
 }
 
+.app_sidebar .link .link_text {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.app_sidebar .link.create button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	position: relative;
+}
+
 .app_sidebar #logo_container {
 	background: hsl(240deg 17% 13%);
 	border-bottom: 1px solid #3d3d57;
@@ -56,21 +70,6 @@
 	padding-bottom: 8px;
 }
 
-.app_sidebar .group>ul {
-	display: flex;
-	justify-content: space-between;
-	padding: 0;
-}
-.app_sidebar .group>ul>.link {
-	margin-bottom: 0;
-	width: calc(50% - 2.5px);
-}
-.app_sidebar .group>ul>.divider {
-	background: hsl(240 14% 32% / 1);
-	margin: 7px 0 5px;
-	width: 1px;
-}
-
 .app_sidebar i {
 	margin-top: 0;
 	margin-right: 7px;
@@ -88,7 +87,7 @@
 	color: #fff;
 	text-decoration: none;
 	display: flex;
-	padding: 5px 8px;
+	padding: 5px 12.5px;
 	height: 100%;
 	width: calc(100% - 14px);
 }
@@ -98,7 +97,7 @@
 	color: #fff;
 	cursor: pointer;
 	display: flex;
-	padding: 8px 8px;
+	padding: 8px 12.5px;
 	width: calc(100% - 14px);
 }
 .app_sidebar .link>button:focus {
@@ -147,6 +146,7 @@
 	transition-delay: 0.18s;
 }
 .app_sidebar h3 {
+	text-align: center;
 	color: #918fa0;
 	font-size: 13px;
 	font-weight: bold;
@@ -271,6 +271,14 @@ html.dark .app_sidebar #wrapper_ver {
 .app_sidebar.collapsed .group>ul>.link {
 	width: 100%;
 }
+
+.app_sidebar.collapsed h3 {
+	opacity: 0;
+	pointer-events: none;
+	height: 0;
+	margin: 0;
+}
+
 .app_sidebar.collapsed .link>a {
 	padding: 5px 12.5px;
 }
@@ -559,31 +567,28 @@ defineExpose({ slideMode, width });
 			<h3>Recent</h3>
 		</ul>
 		<ul>
-			<li class="group">
-				<ul>
-					<li class="link" title="Get answers to various questions you may have">
-						<a href="javascript:window.appWindow.openFAQ();">
-							<i class="ico interr"></i>
-							<div class="link_text">FAQ</div>
-						</a>
-					</li>
-					<div class="divider"></div>
-					<li class="link" title="Need help with Wrapper offline? Chat with the original developers on Discord!">
-						<a href="javascript:window.appWindow.openDiscord();">
-							<i class="ico speech"></i>
-							<div class="link_text">Discord</div>
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li class="link" title="Configure">
-				<button @click="openSettings">
-					<i class="ico cog"></i>
-					<div class="link_text">Settings</div>
-				</button>
-			</li>
-			<span id="wrapper_ver">{{ wrapperVer }}</span>
-		</ul>
+			<li class="link" title="Get answers to various questions you may have">
+        <a href="javascript:window.appWindow.openFAQ();">
+            <i class="ico interr"></i>
+            <div class="link_text">FAQ</div>
+        </a>
+    </li>
+    <li class="link" title="Need help?">
+        <a href="javascript:window.appWindow.openDiscord();">
+            <i class="ico speech"></i>
+            <div class="link_text">Discord</div>
+        </a>
+    </li>
+    <li class="link" title="Configure">
+        <button @click="openSettings">
+            <i class="ico cog"></i>
+            <div class="link_text">Settings</div>
+        </button>
+    </li>
+
+    <div class="spacer"></div>
+    <span id="wrapper_ver">{{ wrapperVer }}</span>
+</ul>
 		<div
 			v-if="!slideMode.enabled"
 			class="dragger"
