@@ -176,9 +176,9 @@ group.route("POST", "/api/movie/delete", async (req, res) => {
 });
 group.route("POST", "/api/movie/upload", (req, res) => {
 	const file = req.files.import;
-	const isStarter = req.body.is_starter;
+	const isStarter = req.body.is_starter === "1" || req.body.is_starter === "true";
 	if (typeof file == "undefined") {
-		return res.status(400).json({ msg: "No file" });
+		return res.status(400).json({ msg: "No file selected" });
 	}
 	const path = file.filepath, buffer = fs.readFileSync(path);
 	if (
@@ -192,9 +192,9 @@ group.route("POST", "/api/movie/upload", (req, res) => {
 	}
 	MovieModel.upload(buffer, isStarter).then((id) => {
 		fs.unlinkSync(path);
-		res.json({ id: id });
+		res.json({ status: "Movie imported successfully", id: id });
 	}).catch((err) => {
-		console.error("Controllers.movie#upload error:", err);
+		console.error("Import error:", err);
 		res.status(500).json({ msg: null });
 	});
 });
