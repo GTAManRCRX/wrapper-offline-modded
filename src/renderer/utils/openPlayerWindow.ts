@@ -14,7 +14,7 @@ export default function openPlayerWindow(movieId: string) {
                       (navigator.platform.indexOf('Win') !== -1);
 
     if (isWindows) {
-        width += 6;
+        width += 3;
 
         if (isWide) {
             height += 68; 
