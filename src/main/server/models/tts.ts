@@ -151,47 +151,40 @@ export default function processVoice(
 					break;
 				}
 				case "pollyold": {
+					const body = new URLSearchParams({
+						but1: text,
+						butS: "0",
+						butP: "0",
+						butPauses: "0",
+						butt0: "Submit",
+					}).toString();
 					const req = https.request(
 						{
-							hostname: "101.99.94.14",														
+							hostname: "readloud.net",
 							path: voice.arg,
 							method: "POST",
-							headers: { 			
-								Host: "tts.town",					
+							headers: {
 								"Content-Type": "application/x-www-form-urlencoded"
 							}
 						},
 						(r) => {
 							let buffers = [];
+							r.on("error", (e) => rej(e));
 							r.on("data", (b) => buffers.push(b));
 							r.on("end", () => {
 								const html = Buffer.concat(buffers);
 								const beg = html.indexOf("/tmp/");
 								const end = html.indexOf("mp3", beg) + 3;
 								const sub = html.subarray(beg, end).toString();
-								//console.log(html.toString());
-
-								https
-									.get({
-										hostname: "101.99.94.14",	
-										path: `/${sub}`,
-										headers: {
-											Host: "tts.town"
-										}
-									}, res)
-									.on("error", rej);
+	
+								https.get(`https://readloud.net${sub}`, (r2) => {
+									r2.on("error", (e) => rej(e));
+									res(r2);
+								});
 							});
 						}
-					).on("error", rej);
-					req.end(
-						new URLSearchParams({
-							but1: text,
-							butS: 0,
-							butP: 0,
-							butPauses: 0,
-							but: "Submit",
-						}).toString()
-					);
+					).on("error", (e) => rej(e));
+					req.end(body);
 					break;
 				}
  				case "pollyold2": {
