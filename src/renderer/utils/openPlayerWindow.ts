@@ -17,9 +17,9 @@ export default function openPlayerWindow(movieId: string) {
         width += 4;
 
         if (isWide) {
-            height += 42; 
+            height += 63; 
         } else {
-            height += 42; 
+            height += 62; 
         }
     }
 
