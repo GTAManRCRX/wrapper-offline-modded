@@ -1,0 +1,329 @@
+import type { Asset } from "../models/asset";
+import AssetModel from "../models/asset";
+import { extensions, FileExtension, fromFile, mimeTypes } from "file-type";
+import Ffmpeg, { FfprobeData, ffprobe } from "fluent-ffmpeg";
+import { path as ffmpegPath } from "@ffmpeg-installer/ffmpeg";
+import { path as ffprobePath } from "@ffprobe-installer/ffprobe";
+import fileTypes from "../data/allowed_file_types.json";
+import fileUtil from "../utils/fileUtil";
+import fs from "fs";
+import httpz from "@octanuary/httpz";
+import MovieModel, { Starter } from "../models/movie";
+import mp3Duration from "mp3-duration";
+import path from "path";
+import { promisify } from "util";
+import sharp from "sharp";
+import tempfile from "tempfile";
+
+Ffmpeg.setFfmpegPath(ffmpegPath);
+Ffmpeg.setFfprobePath(ffprobePath);
+const group = new httpz.Group();
+
+group.route("POST", "/api_v2/asset/delete/", (req, res) => {
+	const id = req.body.data.id || req.body.data.starter_id;
+	if (typeof id == "undefined") {
+		return res.status(400).json({ status:"error" });
+	}
+	try {
+		const asset = AssetModel.getInfo(id) as Asset | Starter;
+		if (asset.type == "movie") {
+			MovieModel.delete(id);
+		} else {
+			AssetModel.delete(id);
+		}
+		res.json({ status:"ok" });
+	} catch (e) {
+		if (e == "404") {
+			return res.status(404).json({ status:"error" });
+		}
+		console.error(req.parsedUrl.pathname, "failed. Error:", e);
+		res.status(500).json({ status:"error" });
+	}
+});
+group.route("GET", "/api/asset/list", (req, res) => {
+	const filter = {
+		type: ["bg", "prop", "sound"] as any as Asset["type"]
+	};
+	res.json(AssetModel.list(filter, false));
+});
+group.route("POST", "/api_v2/assets/imported", (req, res) => {
+	if (!req.body.data.type) {
+		return res.status(400).json({msg:"Expected data.type on request body."});
+	}
+	if (req.body.data.type == "prop") {
+		req.body.data.subtype ||= "0";
+	}
+
+	const filters:Partial<Asset> = {
+		type: req.body.data.type
+	};
+	if (req.body.data.subtype) filters.subtype = req.body.data.subtype;
+
+	res.json({
+		status: "ok",
+		data: {
+			xml: AssetModel.list(filters, true)
+		}
+	});
+});
+group.route("POST", "/goapi/getUserAssetsXml/", (req, res) => {
+	if (req.body.type !== "char") {
+		res.status(307).setHeader("Location", "/api_v2/assets/imported")
+		return res.end();
+	} else if (!req.body.themeId) {
+		return res.status(400).end("1<error><code>malformed</code><message/></error>");
+	}
+	let themeId:string;
+	switch (req.body.themeId) {
+		case "custom":
+			themeId = "family";
+			break;
+		case "action":
+		case "animal":
+		case "space":
+		case "vietnam":
+			themeId = "cc2";
+			break;
+		default:
+			themeId = req.body.themeId;
+	}
+	const filters:Partial<Asset> = {
+		themeId,
+		type: "char"
+	};
+	if (req.body.assetId && req.body.assetId !== "null") filters.id = req.body.assetId;
+
+	res.setHeader("Content-Type", "application/xml");
+	res.end(AssetModel.list(filters, true));
+});
+group.route("*", /^\/(assets|goapi\/getAsset)\/([\S]*)$/, (req, res, next) => {
+	let id = req.method === "GET" ? req.matches[2] : req.body.assetId;
+	if (!id) return res.status(400).end();
+	try {
+		const ext = path.extname(id).toLowerCase();
+		const mimeTypes = {
+			".png": "image/png",
+			".jpg": "image/jpeg",
+			".swf": "application/x-shockwave-flash",
+			".mp3": "audio/mpeg"
+		};
+		const mime = mimeTypes[ext] || "application/octet-stream";
+		res.writeHead(200, {
+			"Content-Type": mime,
+			"X-Content-Type-Options": "nosniff",
+			"Cache-Control": "no-cache"
+		});
+		const readStream = AssetModel.load(id, false);
+		readStream.pipe(res);
+	} catch (e) {
+		if (!res.writableEnded) res.status(404).end();
+	}
+});
+group.route("POST", "/api_v2/asset/get", (req, res) => {
+	const id = req.body.data?.id ?? req.body.data?.starter_id;
+	if (!id) {
+		return res.status(404).json({status:"error"});
+	}
+	try {
+		const info = AssetModel.getInfo(id);
+		const extraInfo = {
+			share: {type:"none"},
+			published: ""
+		}
+		res.json({
+			status: "ok",
+			data: Object.assign(info, extraInfo),
+		});
+	} catch (e) {
+		if (e == "404") {
+			return res.status(404).json({status:"error"});
+		}
+		console.error(req.parsedUrl.pathname, "failed. Error:", e);
+		res.status(500).json({status:"error"});
+	}
+});
+group.route("POST", "/goapi/getAssetTags", (_, r) => r.json([]));
+group.route("POST", "/goapi/getLatestAssetId", (_, r) => r.end(0));
+group.route("POST", "/api_v2/asset/update/", (req, res) => {
+	const id = req.body.data?.id ?? req.body.data?.starter_id ?? null;
+	const title = req.body.data?.title ?? null;
+	const tags = req.body.data?.tags ?? null;
+	if (!id || title === null) {
+		return res.status(400).json({status:"error"});
+	}
+	const update:Partial<Asset> = {
+		title: title
+	};
+	if (tags) {
+		update.tags = tags;
+	}
+	try {
+		AssetModel.updateInfo(id, update);
+		res.json({status:"ok"});
+	} catch (e) {
+		if (e == "404") {
+			return res.status(404).json({status:"error"});
+		}
+		console.error(req.parsedUrl.pathname, "failed. Error:", e);
+		res.status(500).json({status:"error"});
+	}
+});
+group.route("POST", "/api/asset/upload", async (req, res) => {
+	const file = req.files.import;
+	if (typeof file === "undefined" || !req.body.type || !req.body.subtype) {
+		return res.status(400).json({msg:"Missing required parameters."});
+	}
+	const { filepath } = file;
+	const filename = path.parse(file.originalFilename).name;
+	const ext = (await fromFile(filepath))?.ext;
+	if (typeof ext === "undefined") {
+		return res.status(400).json({msg:"File type could not be determined."});
+	}
+
+	let info:Partial<Asset> = {
+		type: req.body.type,
+		subtype: req.body.subtype,
+		title: req.body.name || filename
+	}, stream;
+
+	const ok = info.subtype == "video" ? "video" : info.type;
+	if ((fileTypes[ok] || []).indexOf(ext) < 0) {
+		return res.status(400).json({msg:"Invalid file type."});
+	}
+	try {
+		switch (info.type) {
+			case "bg": {
+				if (info.type == "bg" && ext != "swf") {
+					stream = sharp(filepath)
+						.resize(550, 354, { fit: "fill" })
+						.toFormat("png");
+				} else {
+					stream = fs.createReadStream(filepath);
+				}
+				stream.pause();
+				info.id = await AssetModel.save(stream, ext == "swf" ? ext : "png", info);
+				break;
+			}
+			case "sound": {
+				if (ext != "mp3") {
+					stream = await fileUtil.convertToMp3(filepath, ext);
+				} else {
+					stream = fs.createReadStream(filepath);
+				}
+				const temppath = tempfile(".mp3");
+				const writeStream = fs.createWriteStream(temppath);
+				await new Promise(async (resolve, reject) => {
+					setTimeout(() => {
+						writeStream.close();
+						fs.unlinkSync(temppath);
+						return reject("read stream timed out");
+					}, 1.2e+6);
+					stream.on("end", resolve).pipe(writeStream)
+				});
+				info.duration = await mp3Duration(temppath) * 1e3;
+				info.id = await AssetModel.save(temppath, "mp3", info);
+				fs.unlinkSync(temppath);
+				break;
+			}
+			case "prop": {
+				if (info.subtype == "video") {
+					const asyncFfprobe = promisify(ffprobe);
+					const data = await asyncFfprobe(filepath) as FfprobeData;
+					info.width = data.streams[0].width || data.streams[1].width;
+					info.height = data.streams[0].height || data.streams[1].width;
+
+					const temppath = tempfile(".flv");
+					await new Promise(async (resolve, rej) => {	
+						Ffmpeg(filepath)
+							.output(temppath)
+							.on("end", resolve)
+							.on("error", rej)
+							.run();
+					});
+					info.id = await AssetModel.save(temppath, "flv", info);
+
+					const command = Ffmpeg(filepath)
+						.seek("0:00")
+						.output(path.join(AssetModel.folder, info.id.slice(0, -3) + "png"))
+						.outputOptions("-frames", "1");
+					await new Promise(async (resolve, rej) => {
+						command
+							.on("end", resolve)
+							.on("error", rej)
+							.run();
+					});
+				} else if (info.subtype == "0") {
+					let { ptype } = req.body;
+					switch (ptype) {
+						case "placeable":
+						case "wearable":
+						case "holdable":
+							info.ptype = ptype;
+							break;
+						default:
+							info.ptype = "placeable";
+					}
+					if (ext == "webp" || ext == "tif" || ext == "avif") {
+						stream = sharp(filepath).toFormat("png");
+					} else {
+						stream = fs.createReadStream(filepath);
+					}
+					stream.pause();
+					info.id = await AssetModel.save(stream, ext, info);
+				}
+				break;
+			}
+			default: {
+				return res.status(400).json({msg:"Invalid asset type."});
+			}
+		}
+		res.json(info);
+	} catch (e) {
+		console.error(req.parsedUrl.pathname, "failed. Error:", e);
+		res.status(500).json({status:"error"});
+		return;
+	}
+})
+group.route("POST", "/goapi/saveSound/", async (req, res) => {
+	let isRecord = req.body.bytes ? true : false;
+
+	let filepath, ext, stream;
+	if (isRecord) {
+		filepath = tempfile(".ogg");
+		ext = "ogg";
+		const buffer = Buffer.from(req.body.bytes, "base64");
+		fs.writeFileSync(filepath, buffer);
+	} else {
+
+		filepath = req.files.Filedata.filepath;
+		ext = (await fromFile(filepath))?.ext;
+		if (!ext) {
+			return res.status(400).json({msg:"File type could not be determined."});
+		}
+	}
+
+	let info:Partial<Asset> = {
+		type: "sound",
+		subtype: req.body.subtype,
+		title: req.body.title
+	};
+	try {
+		if (ext != "mp3") {
+			stream = await fileUtil.convertToMp3(filepath, ext);
+			filepath = tempfile(".mp3");
+			const writeStream = fs.createWriteStream(filepath);
+			await new Promise((resolve) => stream.pipe(writeStream).on("end", resolve));
+		}
+		info.duration = await mp3Duration(filepath) * 1e3;
+		const id = await AssetModel.save(filepath, "mp3", info as Asset);
+		res.end(
+			`0<response><asset><id>${id}</id><enc_asset_id>${id}</enc_asset_id><type>sound</type><subtype>${info.subtype}</subtype><title>${info.title}</title><published>0</published><tags></tags><duration>${info.duration}</duration><downloadtype>progressive</downloadtype><file>${id}</file></asset></response>`
+		);
+	} catch (e) {
+		console.error(req.parsedUrl.pathname, "failed. Error:", e);
+		res.status(500).json({status:"error"});
+		return;
+	}
+});
+
+export default group;
