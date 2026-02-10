@@ -5,6 +5,9 @@ This project is important for archival purposes, as the ability to use this lega
 Besides the main feature of Wrapper offline, the original creators added other additional features and improvements compared to the original GoAnimate Wrapper project, and there will be more to come as they implement more and more features  
 [Find more info in the wiki.](https://github.com/Wrapper-Offline/Wrapper-Offline/wiki)
 
+## WARNING  
+This version is deprecated, therefore won't receive any updates
+
 ## THIS IS A MODIFIED VERSION OF THE SOFTWARE!!!  
 IF YOU WANT TO DOWNLOAD THE ORIGINAL VERSION, GET IT FROM THE LINK BELOW  
 [Wrapper offline](https://github.com/wrapper-offline/wrapper-offline.git)
@@ -19,9 +22,6 @@ If you want to import videos and characters from other instances of Wrapper offl
 ## Updates & Support
 For support, the first thing you should do is to head over the original creators' [Discord server](https://discord.gg/Kf7BzSw)  
 As only the original version gets official support, therefore don't expect any for this fork
-
-## WARNING  
-This version is deprecated, therefore won't receive any updates
 
 ## Dependencies
 This program relies on Flash and Node.js to work properly. Luckily, they require no download, as they have already been included in Wrapper offline.
