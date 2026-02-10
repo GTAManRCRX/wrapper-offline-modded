@@ -4,6 +4,7 @@
 	user-select: none;
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	margin: auto;
 	padding: 0 0 12px;
 	margin-bottom: 11px;
