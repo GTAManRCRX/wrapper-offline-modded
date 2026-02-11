@@ -14,7 +14,7 @@ class DirUtil {
 		];
 		for (const p of requiredPaths) {
 			if (!existsSync(p)) {
-				mkdirSync(p);
+				mkdirSync(p, { recursive: true });
 			}
 		}
 	}
