@@ -16,7 +16,7 @@ const BASE_OPTIONS = {
 		"electron",
 		"es6-promise",
 		"formidable",
-		"sharp"
+		"jimp",
 	],
 	platform: "node",
 	target: "node14",
@@ -155,7 +155,7 @@ if (process.argv.includes("--dev")) {
 				"@ffmpeg-installer/ffmpeg",
 				"@ffprobe-installer/ffprobe",
 				"formidable",
-				"sharp",
+				"jimp",
 			].indexOf(a[0]) != -1;
 		})),
 		scripts: {
