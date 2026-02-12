@@ -295,28 +295,6 @@ html.dark .app_sidebar #wrapper_ver {
 .app_sidebar.collapsed .link_text {
 	display: none;
 }
-
-.app_sidebar.resize {
-	filter: brightness(0.95);
-	transition: none;
-}
-.app_sidebar.resize #logo_container {
-	transition: none;
-}
-.app_sidebar.resize .dragger {
-	background: #5298d6;
-}
-
-.app_sidebar.slide_mode {
-	transition: transform 0.2s var(--slide-anim), filter 0.2s var(--slide-anim);
-	filter: brightness(0.92);
-}
-.app_sidebar.slide_mode:hover {
-	box-shadow: 2px 0 10px #0003;
-	filter: none;
-	position: relative;
-	transform: translateX(v-bind("-slideMode.margin + 'px'"))
-}
 </style>
 
 <script setup lang="ts">
