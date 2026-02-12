@@ -1,80 +1,66 @@
-import fileUtil from "../utils/fileUtil";
 import https from "https";
 import voiceList from "../data/voices.json";
+import fileUtil from "../utils/fileUtil"
 import { Readable } from "stream";
+import { URLSearchParams } from "url";
 
 export default function processVoice(
-	voiceName:string,
-	rawText:string
+	voiceName: string,
+	text: string
 ): Promise<Buffer | Readable> {
-	return new Promise(async (res, rej) => {
+	return new Promise(async (resolve, reject) => {
 		const voice = voiceList.voices[voiceName];
-		if (typeof voice == "undefined") {
-			return rej("Requested voice is not supported");
+		if (!voice) {
+			return reject("Requested voice is not supported");
 		}
 
-		let flags: { [key: string]: string } = {};
-		const pieces = rawText.split("#%");
-		let text = pieces.pop()?.substring(0, 300) || "";
-		for (const rawFlag of pieces) {
-			const index = rawFlag.indexOf("=");
-			if (index == -1) continue;
-			const name = rawFlag.substring(0, index);
-			const value = rawFlag.substring(index + 1);
-			flags[name] = value;
-		}
-
-		for (const rawFlag of pieces) {
-            		const index = rawFlag.indexOf("=");
-            		if (index == -1) continue;
-            			const name = rawFlag.substring(0, index);
-            			const value = rawFlag.substring(index + 1);
-            		flags[name] = value;
-        	}
+		const cleanText = text.includes("#%") ? text.split("#%").pop() : text;
 
 		try {
 			switch (voice.source) {
 				case "bing": {
-					const req = https.request(
-						{
-							hostname: "lazypy.ro",
-							path: "/tts/request_tts.php",
-							method: "POST",
-							headers: {
-								"Content-type": "application/x-www-form-urlencoded"
-							}
-						},
-						(r) => {
-							let body = "";
-							r.on("data", (b) => body += b);
-							r.on("end", () => {
-								const json = JSON.parse(body);
-								console.log(JSON.stringify(json, undefined, 2))
-								if (json.success !== true) {
-									return rej(json.error_msg);
-								}
-
-								https.get(json.audio_url, (r) => {
-								res(r);
-								});							
-							});
-							r.on("error", rej);
+					const body = new URLSearchParams({
+						text: text,
+						voice: voice.arg,
+						service: "Bing Translator",
+					}).toString();
+					const req = https.request({
+						hostname: "lazypy.ro",
+						path: "/tts/request_tts.php",
+						method: "POST",
+						headers: {
+							"Content-Type": "application/x-www-form-urlencoded",
+							"Content-Length": Buffer.byteLength(body)
 						}
-						
-					).on("error", rej);
-					req.end(
-						new URLSearchParams({
-							text: text,
-							voice: voice.arg,
-							service: "Bing Translator",
-						}).toString()
-					);
+					}, (res) => {
+						let chunks = [];
+						res.on("data", (chunk) => chunks.push(chunk));
+						res.on("end", () => {
+							try {
+								const json = JSON.parse(Buffer.concat(chunks).toString());
+								
+								if (json.success !== true) {
+									return reject(`Bing proxy error: ${json.error_msg || "Unknown error"}`);
+								}
+								https.get(json.audio_url, (audioRes) => {
+									if (audioRes.statusCode !== 200) {
+										return reject(`Bing audio download error: ${audioRes.statusCode}`);
+									}
+									resolve(audioRes);
+								}).on("error", reject);
+							} catch (e) {
+								reject("Bing proxy error: Invalid JSON response from lazypy");
+							}
+						});
+					});
+					req.on("error", (e) => reject(`Network error: ${e.message}`));
+					req.end(body);
 					break;
 				}
 				case "cepstral": {
-					https.get("https://www.cepstral.com/en/demos", async (r) => {
-						r.on("error", (e) => rej(e));
+					https.get("https://www.cepstral.com/en/demos", (r) => {
 						const cookie = r.headers["set-cookie"];
+						if (!cookie) return reject("Cepstral error: Could not retrieve session cookie.");
 						const q = new URLSearchParams({
 							voiceText: text,
 							voice: voice.arg,
@@ -83,64 +69,64 @@ export default function processVoice(
 							pitch: "1",
 							sfx: "none"
 						}).toString();
-	
-						https.get(
-							{
-								hostname: "www.cepstral.com",
-								path: `/demos/createAudio.php?${q}`,
-								headers: { Cookie: cookie }
-							},
-							(r2) => {
-								let body = "";
-								r2.on("error", (e) => rej(e));
-								r2.on("data", (c) => body += c);
-								r2.on("end", () => {
-									const json = JSON.parse(body);
-									https.get(`https://www.cepstral.com${json.mp3_loc}`, (r3) => {
-										r3.on("error", (e) => rej(e));
-										res(r3);
-									});
-								});
+						const req = https.get({
+							hostname: "www.cepstral.com",
+							path: `/demos/createAudio.php?${q}`,
+							headers: { 
+								"Cookie": cookie,
+								"Referer": "https://www.cepstral.com",
+								"X-Requested-With": "XMLHttpRequest" 
 							}
-						);
-					});
+						}, (r) => {
+							let body = "";
+							r.on("data", (chunk) => body += chunk);
+							r.on("end", () => {
+								try {
+									const json = JSON.parse(body);
+									if (!json.mp3_loc) return reject("Cepstral error: MP3 location not found in response.");
+									https.get(`https://www.cepstral.com${json.mp3_loc}`, resolve).on("error", reject);
+								} catch (e) {
+									reject("Cepstral error: Invalid JSON response.");
+								}
+							});
+						});
+						req.on("error", reject);
+					}).on("error", reject);
 					break;
 				}
-				case "polly2": {
+				case "pollytwo": {
 					const body = new URLSearchParams({
 						msg: text,
 						lang: voice.arg,
 						source: "ttsmp3"
 					}).toString();
-
-					const req = https.request(
-						{
-							hostname: "ttsmp3.com",
-							path: "/makemp3_new.php",
-							method: "POST",
-							headers: { 
-								"Content-Length": body.length,
-								"Content-type": "application/x-www-form-urlencoded"
-							}
-						},
-						(r) => {
-							let body = "";
-							r.on("data", (b) => body += b);
-							r.on("end", () => {
-								const json = JSON.parse(body);
-								if (json.Error == 1) rej(json.Text);
-
-								https
-									.get(json.URL, res)
-									.on("error", rej);
-							});
-							r.on("error", rej);
+					const req = https.request({
+						hostname: "ttsmp3.com",
+						path: "/makemp3_new.php",
+						method: "POST",
+						headers: { 
+							"Content-Type": "application/x-www-form-urlencoded",
+							"Content-Length": Buffer.byteLength(body)
 						}
-					).on("error", rej);
+					}, (res) => {
+						let chunks = [];
+						res.on("data", (chunk) => chunks.push(chunk));
+						res.on("end", () => {
+							try {
+								const json = JSON.parse(Buffer.concat(chunks).toString());
+								if (json.Error === 1) return reject(json.Text);
+								const audioUrl = json.URL.startsWith("https") ? json.URL : json.URL.replace("http", "https");
+								https.get(audioUrl, resolve).on("error", reject);
+							} catch (e) {
+								reject("Invalid JSON from ttsmp3.com");
+							}
+						});
+					});
+					req.on("error", (e) => reject(`Network error: ${e.message}`));
 					req.end(body);
 					break;
 				}
-				case "pollyold": {
+				case "readloud": {
 					const body = new URLSearchParams({
 						but1: text,
 						butS: "0",
@@ -148,61 +134,70 @@ export default function processVoice(
 						butPauses: "0",
 						butt0: "Submit",
 					}).toString();
-					const req = https.request(
-						{
-							hostname: "readloud.net",
-							path: voice.arg,
-							method: "POST",
-							headers: {
-								"Content-Type": "application/x-www-form-urlencoded"
-							}
-						},
-						(r) => {
-							let buffers = [];
-							r.on("error", (e) => rej(e));
-							r.on("data", (b) => buffers.push(b));
-							r.on("end", () => {
-								const html = Buffer.concat(buffers);
-								const beg = html.indexOf("/tmp/");
-								const end = html.indexOf("mp3", beg) + 3;
-								const sub = html.subarray(beg, end).toString();
-	
-								https.get(`https://readloud.net${sub}`, (r2) => {
-									r2.on("error", (e) => rej(e));
-									res(r2);
-								});
-							});
+					const req = https.request({
+						hostname: "readloud.net",
+						path: voice.arg,
+						method: "POST",
+						headers: {
+							"Content-Type": "application/x-www-form-urlencoded",
+							"Content-Length": Buffer.byteLength(body),
+							"User-Agent": "Mozilla/5.0"
 						}
-					).on("error", (e) => rej(e));
+					}, (res) => {
+						let buffers = [];
+						res.on("error", reject);
+						res.on("data", (chunk) => buffers.push(chunk));
+						res.on("end", () => {
+							const html = Buffer.concat(buffers).toString();
+							const beg = html.indexOf("/tmp/");
+							if (beg === -1) return reject("Readloud error: MP3 link not found in HTML");
+							const end = html.indexOf(".mp3", beg) + 4;
+							const sub = html.substring(beg, end).trim();
+							if (sub.length > 0) {
+								https.get(`https://readloud.net${sub}`, resolve).on("error", reject);
+							} else {
+								reject("Readloud error: Empty MP3 path");
+							}
+						});
+					});
+					req.on("error", reject);
 					req.end(body);
 					break;
 				}
- 				case "pollyold2": {
-					const req = https.request(
-                      {
+ 				case "readaloud": {
+					const body = JSON.stringify([{
+						voiceId: voice.arg,
+						ssml: `<speak version="1.0" xml:lang="${voice.lang}">${text}</speak>`
+					}]);
+					const req = https.request({
 						hostname: "support.readaloud.app",
 						path: "/ttstool/createParts",
 						method: "POST",
 						headers: {
-								"Content-Type": "application/json",
-						},
-					}, (r) => {
-						let buffers = [];
-						r.on("data", (d) => buffers.push(d)).on("error", rej).on("end", () => {
-							https.get({
-								hostname: "support.readaloud.app",
-								path: `/ttstool/getParts?q=${JSON.parse(Buffer.concat(buffers))[0]}`,
-								headers: {
-									"Content-Type": "audio/mp3"
-								}
-							}, res).on("error", rej);
-						});
-					}).end(JSON.stringify([
-						{
-							voiceId: voice.arg,
-							ssml: `<speak version="1.0" xml:lang="${voice.lang}">${text}</speak>`
+							"Content-Type": "application/json",
+							"Content-Length": Buffer.byteLength(body)
 						}
-					])).on("error", rej);
+					}, (res) => {
+						let chunks = [];
+						res.on("data", (d) => chunks.push(d));
+						res.on("end", () => {
+							try {
+								const json = JSON.parse(Buffer.concat(chunks).toString());
+								const fileId = json[0];
+								if (!fileId) return reject("ReadAloud error: No part ID received");
+								https.get({
+									hostname: "support.readaloud.app",
+									path: `/ttstool/getParts?q=${fileId}`,
+									headers: { "Accept": "audio/mp3" }
+								}, resolve).on("error", reject);
+
+							} catch (e) {
+								reject("ReadAloud error: Invalid JSON response");
+							}
+						});
+					});
+					req.on("error", (e) => reject(`Network error: ${e.message}`));
+					req.end(body);
 					break;
 				}
 				case "vocalware": {
@@ -214,49 +209,43 @@ export default function processVoice(
 						TXT: text,
 						EXT: "mp3",
 						FNAME: "",
-						ACC: 15679,
-						SceneID: 2703396,
+						ACC: "15679",
+						SceneID: "2703396",
 						HTTP_ERR: "",
 					}).toString();
-
-					console.log(`https://cache-a.oddcast.com/tts/genB.php?${q}`)
-					https
-						.get(
-							{
-								hostname: "cache-a.oddcast.com",
-								path: `/tts/genB.php?${q}`,
-								headers: {
-									"Host": "cache-a.oddcast.com",
-									"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:107.0) Gecko/20100101 Firefox/107.0",
-									"Accept": "*/*",
-									"Accept-Language": "en-US,en;q=0.5",
-									"Accept-Encoding": "gzip, deflate, br",
-									"Origin": "https://www.oddcast.com",
-									"DNT": 1,
-									"Connection": "keep-alive",
-									"Referer": "https://www.oddcast.com/",
-									"Sec-Fetch-Dest": "empty",
-									"Sec-Fetch-Mode": "cors",
-									"Sec-Fetch-Site": "same-site"
-								}
-							}, res
-						)
-						.on("error", rej);
+					const req = https.get({
+						hostname: "cache-a.oddcast.com",
+						path: `/tts/genB.php?${q}`,
+						headers: {
+							"Referer": "https://www.oddcast.com/",
+							"Origin": "https://www.oddcast.com",
+							"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
+							"Accept": "*/*"
+						}
+					}, (audioRes) => {
+						if (audioRes.statusCode !== 200) {
+							return reject(`Vocalware Error: ${audioRes.statusCode}`);
+						}
+						resolve(audioRes);
+					});
+					req.on("error", (e) => reject(`Network error: ${e.message}`));
 					break;
 				}
 				case "googletranslate": {
 					const q = new URLSearchParams({
 						ie: "UTF-8",
-                        total: 1,
-                        idx: 0,
-                        client: "tw-ob",
-                        q: text,
-                        tl: voice.arg,
+						total: "1",
+						idx: "0",
+						client: "tw-ob",
+						q: text,
+						tl: voice.arg,
 					}).toString();
-
-					https
-						.get(`https://translate.google.com/translate_tts?${q}`, res)
-						.on("error", rej);
+					https.get(`https://translate.google.com/translate_tts?${q}`, (audioRes) => {
+						if (audioRes.statusCode !== 200) {
+							return reject(`Google TTS error: ${audioRes.statusCode}`);
+						}
+						resolve(audioRes);
+					}).on("error", (e) => reject(`Network error: ${e.message}`));
 					break;
 				}
  				case "cobaltspeech": {
@@ -264,15 +253,23 @@ export default function processVoice(
 						"text.text": text,
 						"config.model_id": voice.lang,
 						"config.speaker_id": voice.arg,
-					    "config.speech_rate": 1,
-						"config.variation_scale": 0,
+						"config.speech_rate": "1",
+						"config.variation_scale": "0",
 						"config.audio_format.codec": "AUDIO_CODEC_WAV"
 					}).toString();
-
 					https.get({
 						hostname: "demo.cobaltspeech.com",
 						path: `/voicegen/api/voicegen/v1/streaming-synthesize?${q}`,
-					}, (r) => fileUtil.convertToMp3(r, "wav").then(res).catch(rej)).on("error", rej);
+						headers: { "Accept": "*/*" }
+					}, (audioRes) => {
+						if (audioRes.statusCode !== 200) {
+							return reject(`Cobalt error: ${audioRes.statusCode}`);
+						}
+						fileUtil.convertToMp3(audioRes, "wav")
+							.then(resolve)
+							.catch((e) => reject(`Conversion error: ${e.message}`));
+
+					}).on("error", (e) => reject(`Network error: ${e.message}`));
 					break;
 				}
  				case "sapi4": {
@@ -280,58 +277,77 @@ export default function processVoice(
 						text,
 						voice: voice.arg
 					}).toString();
-
-					https.get({
+					const req = https.get({
 						hostname: "www.tetyys.com",
 						path: `/SAPI4/SAPI4?${q}`,
-					}, (r) => fileUtil.convertToMp3(r, "wav").then(res).catch(rej)).on("error", rej);
+						headers: { "Accept": "audio/wav" }
+					}, (audioRes) => {
+						if (audioRes.statusCode !== 200) {
+							return reject(`SAPI4 error: ${audioRes.statusCode}`);
+						}
+						fileUtil.convertToMp3(audioRes, "wav")
+							.then(resolve)
+							.catch((e) => reject(`SAPI4 conversion error: ${e.message}`));
+
+					});
+					req.on("error", (e) => reject(`Network error: ${e.message}`));
 					break;
 				}
  				case "onecore": {
-					const req = https.request(
-                      {
+					const body = JSON.stringify([{
+						voiceId: voice.arg,
+						ssml: `<speak version="1.0" xml:lang="${voice.lang}">${text}</speak>`
+					}]);
+					const req = https.request({
 						hostname: "support.readaloud.app",
 						path: "/ttstool/createParts",
 						method: "POST",
 						headers: {
-								"Content-Type": "application/json",
-						},
-					}, (r) => {
-						let buffers = [];
-						r.on("data", (d) => buffers.push(d)).on("error", rej).on("end", () => {
-							https.get({
-								hostname: "support.readaloud.app",
-								path: `/ttstool/getParts?q=${JSON.parse(Buffer.concat(buffers))[0]}`,
-								headers: {
-									"Content-Type": "audio/mp3"
-								}
-							}, res).on("error", rej);
-						});
-					}).end(JSON.stringify([
-						{
-							voiceId: voice.arg,
-							ssml: `<speak version="1.0" xml:lang="${voice.lang}">${text}</speak>`
+							"Content-Type": "application/json",
+							"Content-Length": Buffer.byteLength(body)
 						}
-					])).on("error", rej);
+					}, (r) => {
+						let chunks = [];
+						r.on("data", (d) => chunks.push(d));
+						r.on("error", reject);
+						r.on("end", () => {
+							try {
+								const json = JSON.parse(Buffer.concat(chunks).toString());
+								const fileId = json[0];
+								if (!fileId) return reject("OneCore error: No part ID received");
+								https.get({
+									hostname: "support.readaloud.app",
+									path: `/ttstool/getParts?q=${fileId}`,
+									headers: { "Accept": "audio/mp3" }
+								}, resolve).on("error", reject); //
+							} catch (e) {
+								reject("OneCore error: Invalid JSON response from support.readaloud.app");
+							}
+						});
+					});
+					req.on("error", (e) => reject(`Network error: ${e.message}`));
+					req.end(body);
 					break;
 				}
-				case "onecore2": {
+				case "onecoretwo": {
 					const q = new URLSearchParams({
 						hl: voice.lang,
 						c: "MP3",
-                        f: "16khz_16bit_stereo",
-                        v: voice.arg,
-                        src: text,
+						f: "16khz_16bit_stereo",
+						v: voice.arg,
+						src: text,
 					}).toString();
-
-					https
-						.get(`https://api.voicerss.org/?key=83baa990727f47a89160431e874a8823&${q}`, res)
-						.on("error", rej);
+					https.get(`https://api.voicerss.org/?key=83baa990727f47a89160431e874a8823&${q}`, (audioRes) => {
+						if (audioRes.statusCode !== 200) {
+							return reject(`VoiceRSS error: ${audioRes.statusCode}`);
+						}
+						resolve(audioRes);
+					}).on("error", (e) => reject(`Network error: ${e.message}`));
 					break;
 				}
 				case "svox": {
 					const q = new URLSearchParams({
-						speed: 0,
+						speed: "0",
 						apikey: "ispeech-listenbutton-betauserkey",
 						text: text,
 						action: "convert",
@@ -339,15 +355,17 @@ export default function processVoice(
 						format: "mp3",
 						e: "audio.mp3"
 					}).toString();
-
-					https
-						.get(`https://api.ispeech.org/api/rest?${q}`, res)
-						.on("error", rej);
+					https.get(`https://api.ispeech.org/api/rest?${q}`, (audioRes) => {
+						if (audioRes.statusCode !== 200) {
+							return reject(`iSpeech error: ${audioRes.statusCode}`);
+						}
+						resolve(audioRes);
+					}).on("error", (e) => reject(`Network error: ${e.message}`));
 					break;
 				}
 				case "neospeechold": {
 					const q = new URLSearchParams({
-						speed: 0,
+						speed: "0",
 						apikey: "38fcab81215eb701f711df929b793a89",
 						text: text,
 						action: "convert",
@@ -355,22 +373,12 @@ export default function processVoice(
 						format: "mp3",
 						e: "audio.mp3"
 					}).toString();
-
-					https
-						.get(`https://api.ispeech.org/api/rest?${q}`, res)
-						.on("error", rej);
-					break;
-				}
-				case "youdao": {
-					const q = new URLSearchParams({
-						audio: text,
-						le: voice.arg,
-						type: voice.type
-					}).toString();
-
-					https
-						.get(`https://dict.youdao.com/dictvoice?${q}`, res)
-						.on("error", rej);
+					https.get(`https://api.ispeech.org/api/rest?${q}`, (audioRes) => {
+						if (audioRes.statusCode !== 200) {
+							return reject(`Neospeech (iSpeech) error: ${audioRes.statusCode}`);
+						}
+						resolve(audioRes);
+					}).on("error", (e) => reject(`Network error: ${e.message}`));
 					break;
 				}
 				case "baidu": {
@@ -380,56 +388,70 @@ export default function processVoice(
 						spd: "5",
 						source: "web",
 					}).toString();
-
-					https
-						.get(`https://fanyi.baidu.com/gettts?${q}`, res)
-						.on("error", rej);
+					https.get({
+						hostname: "fanyi.baidu.com",
+						path: `/gettts?${q}`,
+						headers: {
+							"User-Agent": "Mozilla/5.0",
+							"Referer": "https://fanyi.baidu.com"
+						}
+					}, (audioRes) => {
+						if (audioRes.statusCode !== 200) {
+							return reject(`Baidu Error: ${audioRes.statusCode}`);
+						}
+						resolve(audioRes);
+					}).on("error", (e) => reject(`Network error: ${e.message}`));
 					break;
 				}
 				case "tiktok": {
-					const req = https.request(
-						{
-							hostname: "lazypy.ro",
-							path: "/tts/request_tts.php",
-							method: "POST",
-							headers: {
-								"Content-type": "application/x-www-form-urlencoded"
-							}
-						},
-						(r) => {
-							let body = "";
-							r.on("data", (b) => body += b);
-							r.on("end", () => {
-								const json = JSON.parse(body);
-								console.log(JSON.stringify(json, undefined, 2))
+					const body = new URLSearchParams({
+						text: text,
+						voice: voice.arg,
+						service: "TikTok",
+					}).toString();
+
+					const req = https.request({
+						hostname: "lazypy.ro",
+						path: "/tts/request_tts.php",
+						method: "POST",
+						headers: {
+							"Content-Type": "application/x-www-form-urlencoded",
+							"Content-Length": Buffer.byteLength(body)
+						}
+					}, (res) => {
+						let chunks = [];
+						res.on("data", (chunk) => chunks.push(chunk));
+						res.on("end", () => {
+							try {
+								const json = JSON.parse(Buffer.concat(chunks).toString());
+								
 								if (json.success !== true) {
-									return rej(json.error_msg);
+									return reject(`TikTok proxy error: ${json.error_msg || "Unknown error"}`);
 								}
 
-								https.get(json.audio_url, (r) => {
-								res(r);
-								});							
-							});
-							r.on("error", rej);
-						}
-						
-					).on("error", rej);
-					req.end(
-						new URLSearchParams({
-							text: text,
-							voice: voice.arg,
-							service: "TikTok",
-						}).toString()
-					);
+								https.get(json.audio_url, (audioRes) => {
+									if (audioRes.statusCode !== 200) {
+										return reject(`TikTok audio download error: ${audioRes.statusCode}`);
+									}
+									resolve(audioRes);
+								}).on("error", reject);
+								
+							} catch (e) {
+								reject("TikTok proxy error: Invalid JSON response from lazypy");
+							}
+						});
+					});
+					req.on("error", (e) => reject(`Network error: ${e.message}`));
+					req.end(body);
 					break;
 				}
-	
+				
 				default: {
-					return rej("Not implemented");
+					return reject("Not implemented");
 				}
 			}
 		} catch (e) {
-			return rej(e);
+			return reject(e);
 		}
 	});
 };

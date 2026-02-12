@@ -228,7 +228,7 @@
 			"country": "SA",
 			"language": "ar",
 			"gender": "F",
-			"source": "polly2",
+			"source": "pollytwo",
 			"arg": "Zeina",
 			"desc": "Zeina"
 		},
@@ -236,7 +236,7 @@
 			"country": "AU",
 			"language": "en",
 			"gender": "M",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/english/australian/48-male-voice-russell.html",
 			"desc": "Russell"
 		},
@@ -244,7 +244,7 @@
 			"country": "AU",
 			"language": "en",
 			"gender": "M",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon Australian English (Russell)",
 			"lang": "en-AU",
 			"desc": "Russell (TTSTool)"
@@ -253,7 +253,7 @@
 			"country": "AU",
 			"language": "en",
 			"gender": "F",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/english/australian/43-female-voice-nicole.html",
 			"desc": "Nicole"
 		},
@@ -261,7 +261,7 @@
 			"country": "AU",
 			"language": "en",
 			"gender": "F",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon Australian English (Nicole)",
 			"lang": "en-AU",
 			"desc": "Nicole (TTSTool)"
@@ -270,7 +270,7 @@
 			"country": "BR",
 			"language": "pt",
 			"gender": "M",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/portuguese/brasilian/46-voz-masculina-ricardo.html",
 			"desc": "Ricardo"
 		},
@@ -278,7 +278,7 @@
 			"country": "BR",
 			"language": "pt",
 			"gender": "M",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon Brazilian Portuguese (Ricardo)",
 			"lang": "pt-BR",
 			"desc": "Ricardo (TTSTool)"
@@ -287,7 +287,7 @@
 			"country": "BR",
 			"language": "pt",
 			"gender": "F",
-			"source": "polly2",
+			"source": "pollytwo",
 			"arg": "Camila",
 			"desc": "Camila"
 		},
@@ -295,7 +295,7 @@
 			"country": "BR",
 			"language": "pt",
 			"gender": "F",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon Brazilian Portuguese (Vitoria)",
 			"lang": "pt-BR",
 			"desc": "Vitória (TTSTool)"
@@ -304,7 +304,7 @@
 			"country": "GB",
 			"language": "en",
 			"gender": "F",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/english/british/5-female-voice-amy.html",
 			"desc": "Amy"
 		},
@@ -312,7 +312,7 @@
 			"country": "GB",
 			"language": "en",
 			"gender": "F",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon British English (Amy)",
 			"lang": "en-GB",
 			"desc": "Amy (TTSTool)"
@@ -321,7 +321,7 @@
 			"country": "GB",
 			"language": "en",
 			"gender": "F",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/english/british/17-female-voice-emma.html",
 			"desc": "Emma"
 		},
@@ -329,7 +329,7 @@
 			"country": "GB",
 			"language": "en",
 			"gender": "F",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon British English (Emma)",
 			"lang": "en-GB",
 			"desc": "Emma (TTSTool)"
@@ -338,7 +338,7 @@
 			"country": "GB",
 			"language": "en",
 			"gender": "M",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/english/british/1-male-voice-brian.html",
 			"desc": "Brian"
 		},
@@ -346,7 +346,7 @@
 			"country": "GB",
 			"language": "en",
 			"gender": "M",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon British English (Brian)",
 			"lang": "en-GB",
 			"desc": "Brian (TTSTool)"
@@ -355,7 +355,7 @@
 			"country": "CA",
 			"language": "fr",
 			"gender": "F",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/french/canadian/13-voix-de-femme-chantal.html",
 			"desc": "Chantal"
 		},
@@ -363,7 +363,7 @@
 			"country": "CA",
 			"language": "fr",
 			"gender": "F",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon Canadian French (Chantal)",
 			"lang": "fr-CA",
 			"desc": "Chantal (TTSTool)"
@@ -372,7 +372,7 @@
 			"country": "ES",
 			"language": "es",
 			"gender": "M",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/spanish/castilian/18-voz-masculina-enrique.html",
 			"desc": "Enrique"
 		},
@@ -380,7 +380,7 @@
 			"country": "ES",
 			"language": "es",
 			"gender": "M",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon Castilian Spanish (Enrique)",
 			"lang": "es-ES",
 			"desc": "Enrique (TTSTool)"
@@ -389,7 +389,7 @@
 			"country": "ES",
 			"language": "es",
 			"gender": "F",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/spanish/castilian/14-voz-femenina-conchita.html",
 			"desc": "Conchita"
 		},
@@ -397,7 +397,7 @@
 			"country": "ES",
 			"language": "es",
 			"gender": "F",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon Castilian Spanish (Conchita)",
 			"lang": "es-ES",
 			"desc": "Conchita (TTSTool)"
@@ -406,7 +406,7 @@
 			"country": "ES",
 			"language": "es",
 			"gender": "F",
-			"source": "polly2",
+			"source": "pollytwo",
 			"arg": "Lucia",
 			"desc": "Lucia"
 		},
@@ -414,7 +414,7 @@
 			"country": "DK",
 			"language": "da",
 			"gender": "M",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/danish/37-mandlig-stemme-mads.html",
 			"desc": "Mads"
 		},
@@ -422,7 +422,7 @@
 			"country": "DK",
 			"language": "da",
 			"gender": "M",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon Danish (Mads)",
 			"lang": "da-DK",
 			"desc": "Mads (TTSTool)"
@@ -431,7 +431,7 @@
 			"country": "DK",
 			"language": "da",
 			"gender": "F",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/danish/42-kvinde-stemme-naja.html",
 			"desc": "Naja"
 		},
@@ -439,7 +439,7 @@
 			"country": "DK",
 			"language": "da",
 			"gender": "F",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon Danish (Naja)",
 			"lang": "da-DK",
 			"desc": "Naja (TTSTool)"
@@ -448,7 +448,7 @@
 			"country": "NL",
 			"language": "nl",
 			"gender": "F",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/dutch/36-vrouwelijke-stem-lotte.html",
 			"desc": "Lotte"
 		},
@@ -456,7 +456,7 @@
 			"country": "NL",
 			"language": "nl",
 			"gender": "F",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon Dutch (Lotte)",
 			"lang": "nl-NL",
 			"desc": "Lotte (TTSTool)"
@@ -465,7 +465,7 @@
 			"country": "NL",
 			"language": "nl",
 			"gender": "M",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/dutch/47-mannelijke-stem-ruben.html",
 			"desc": "Ruben"
 		},
@@ -473,7 +473,7 @@
 			"country": "NL",
 			"language": "nl",
 			"gender": "M",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon Dutch (Ruben)",
 			"lang": "nl-NL",
 			"desc": "Ruben (TTSTool)"
@@ -482,7 +482,7 @@
 			"country": "FR",
 			"language": "fr",
 			"gender": "F",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon French (Celine)",
 			"lang": "fr-FR",
 			"desc": "Céline (TTSTool)"
@@ -491,7 +491,7 @@
 			"country": "FR",
 			"language": "fr",
 			"gender": "M",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/french/40-voix-masculine-mathieu.html",
 			"desc": "Mathieu"
 		},
@@ -499,7 +499,7 @@
 			"country": "FR",
 			"language": "fr",
 			"gender": "M",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon French (Mathieu)",
 			"lang": "fr-FR",
 			"desc": "Mathieu (TTSTool)"
@@ -508,7 +508,7 @@
 			"country": "FR",
 			"language": "fr",
 			"gender": "F",
-			"source": "polly2",
+			"source": "pollytwo",
 			"arg": "Lea",
 			"desc": "Léa"
 		},
@@ -516,7 +516,7 @@
 			"country": "DE",
 			"language": "de",
 			"gender": "M",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/german/24-mannerstimme-hans.html",
 			"desc": "Hans"
 		},
@@ -524,7 +524,7 @@
 			"country": "DE",
 			"language": "de",
 			"gender": "M",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon German (Hans)",
 			"lang": "de-DE",
 			"desc": "Hans (TTSTool)"
@@ -533,7 +533,7 @@
 			"country": "DE",
 			"language": "de",
 			"gender": "F",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/german/39-frauenstimme-marlene.html",
 			"desc": "Marlene"
 		},
@@ -541,7 +541,7 @@
 			"country": "DE",
 			"language": "de",
 			"gender": "F",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon German (Marlene)",
 			"lang": "de-DE",
 			"desc": "Marlene (TTSTool)"
@@ -550,7 +550,7 @@
 			"country": "IS",
 			"language": "is",
 			"gender": "M",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/icelandic/31-male-rodd-karl.html",
 			"desc": "Karl"
 		},
@@ -558,7 +558,7 @@
 			"country": "IS",
 			"language": "is",
 			"gender": "M",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon Icelandic (Karl)",
 			"lang": "is-IS",
 			"desc": "Karl (TTSTool)"
@@ -567,7 +567,7 @@
 			"country": "IS",
 			"language": "is",
 			"gender": "F",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon Icelandic (Dora)",
 			"lang": "is-IS",
 			"desc": "Dóra (TTSTool)"
@@ -576,7 +576,7 @@
 			"country": "IN",
 			"language": "en",
 			"gender": "F",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon Indian English (Raveena)",
 			"lang": "en-IN",
 			"desc": "Raveena (TTSTool)"
@@ -585,7 +585,7 @@
 			"country": "IT",
 			"language": "it",
 			"gender": "M",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/italian/22-voce-maschile-giorgio.html",
 			"desc": "Giorgio"
 		},
@@ -593,7 +593,7 @@
 			"country": "IT",
 			"language": "it",
 			"gender": "M",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon Italian (Giorgio)",
 			"lang": "it-IT",
 			"desc": "Giorgio (TTSTool)"
@@ -602,7 +602,7 @@
 			"country": "IT",
 			"language": "it",
 			"gender": "F",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/italian/8-voce-femminile-carla.html",
 			"desc": "Carla"
 		},
@@ -610,7 +610,7 @@
 			"country": "IT",
 			"language": "it",
 			"gender": "F",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon Italian (Carla)",
 			"lang": "it-IT",
 			"desc": "Carla (TTSTool)"
@@ -619,7 +619,7 @@
 			"country": "no",
 			"language": "no",
 			"gender": "F",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/norwegian/34-kvinne-stemme-liv.html",
 			"desc": "Liv"
 		},
@@ -627,7 +627,7 @@
 			"country": "no",
 			"language": "no",
 			"gender": "F",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon Norwegian (Liv)",
 			"lang": "nb-NO",
 			"desc": "Liv (TTSTool)"
@@ -636,7 +636,7 @@
 			"country": "PL",
 			"language": "pl",
 			"gender": "M",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/polish/26-meski-glos-jacek.html",
 			"desc": "Jacek"
 		},
@@ -644,7 +644,7 @@
 			"country": "PL",
 			"language": "pl",
 			"gender": "M",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon Polish (Jacek)",
 			"lang": "pl-PL",
 			"desc": "Jacek (TTSTool)"
@@ -653,7 +653,7 @@
 			"country": "PL",
 			"language": "pl",
 			"gender": "M",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/polish/27-meski-glos-jan.html",
 			"desc": "Jan"
 		},
@@ -661,7 +661,7 @@
 			"country": "PL",
 			"language": "pl",
 			"gender": "M",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon Polish (Jan)",
 			"lang": "pl-PL",
 			"desc": "Jan (TTSTool)"
@@ -670,7 +670,7 @@
 			"country": "PL",
 			"language": "pl",
 			"gender": "F",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/polish/38-kobiecy-glos-maja.html",
 			"desc": "Maja"
 		},
@@ -678,7 +678,7 @@
 			"country": "PL",
 			"language": "pl",
 			"gender": "F",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon Polish (Maja)",
 			"lang": "pl-PL",
 			"desc": "Maja (TTSTool)"
@@ -687,7 +687,7 @@
 			"country": "PL",
 			"language": "pl",
 			"gender": "F",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/polish/19-kobiecy-glos-ewa.html",
 			"desc": "Ewa"
 		},
@@ -695,7 +695,7 @@
 			"country": "PL",
 			"language": "pl",
 			"gender": "F",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon Polish (Ewa)",
 			"lang": "pl-PL",
 			"desc": "Ewa (TTSTool)"
@@ -704,7 +704,7 @@
 			"country": "PT",
 			"language": "pt",
 			"gender": "M",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/portuguese/15-voz-masculina-cristiano.html",
 			"desc": "Cristiano"
 		},
@@ -712,7 +712,7 @@
 			"country": "PT",
 			"language": "pt",
 			"gender": "M",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon Portuguese (Cristiano)",
 			"lang": "pt-PT",
 			"desc": "Cristiano (TTSTool)"
@@ -721,7 +721,7 @@
 			"country": "PT",
 			"language": "pt",
 			"gender": "F",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon Portuguese (Ines)",
 			"lang": "pt-PT",
 			"desc": "Inês (TTSTool)"
@@ -730,7 +730,7 @@
 			"country": "RO",
 			"language": "ro",
 			"gender": "F",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon Romanian (Carmen)",
 			"lang": "ro-RO",
 			"desc": "Carmen (TTSTool)"
@@ -739,7 +739,7 @@
 			"country": "RU",
 			"language": "ru",
 			"gender": "F",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/russian/50-zhenskiy-golos-tatyana.html",
 			"desc": "Tatyana"
 		},
@@ -747,7 +747,7 @@
 			"country": "RU",
 			"language": "ru",
 			"gender": "F",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon Russian (Tatyana)",
 			"lang": "ru-RU",
 			"desc": "Tatyana (TTSTool)"
@@ -756,7 +756,7 @@
 			"country": "RU",
 			"language": "ru",
 			"gender": "M",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon Russian (Maxim)",
 			"lang": "ru-RU",
 			"desc": "Maxim (TTSTool)"
@@ -765,7 +765,7 @@
 			"country": "SE",
 			"language": "sv",
 			"gender": "F",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/swedish/10-kvinnlig-rost-astrid.html",
 			"desc": "Astrid"
 		},
@@ -773,7 +773,7 @@
 			"country": "SE",
 			"language": "sv",
 			"gender": "F",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon Swedish (Astrid)",
 			"lang": "sv-SE",
 			"desc": "Astrid (TTSTool)"
@@ -782,7 +782,7 @@
 			"country": "TR",
 			"language": "tr",
 			"gender": "F",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/turkish/20-kadın-sesi-filiz.html",
 			"desc": "Filiz"
 		},
@@ -790,7 +790,7 @@
 			"country": "TR",
 			"language": "tr",
 			"gender": "F",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon Turkish (Filiz)",
 			"lang": "tr-TR",
 			"desc": "Filiz (TTSTool)"
@@ -799,7 +799,7 @@
 			"country": "US",
 			"language": "en",
 			"gender": "M",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/english/american/30-child-s-boy-voice-justin.html",
 			"desc": "Justin"
 		},
@@ -807,7 +807,7 @@
 			"country": "US",
 			"language": "en",
 			"gender": "M",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon US English (Justin)",
 			"lang": "en-US",
 			"desc": "Justin (TTSTool)"
@@ -816,7 +816,7 @@
 			"country": "US",
 			"language": "en",
 			"gender": "F",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/english/american/32-female-voice-kendra.html",
 			"desc": "Kendra"
 		},
@@ -824,7 +824,7 @@
 			"country": "US",
 			"language": "en",
 			"gender": "F",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon US English (Kendra)",
 			"lang": "en-US",
 			"desc": "Kendra (TTSTool)"
@@ -833,7 +833,7 @@
 			"country": "US",
 			"language": "en",
 			"gender": "F",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/english/american/25-child-s-girl-voice-ivy.html",
 			"desc": "Ivy"
 		},
@@ -841,7 +841,7 @@
 			"country": "US",
 			"language": "en",
 			"gender": "F",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon US English (Ivy)",
 			"lang": "en-US",
 			"desc": "Ivy (TTSTool)"
@@ -850,7 +850,7 @@
 			"country": "US",
 			"language": "en",
 			"gender": "M",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/english/american/29-male-voice-joey.html",
 			"desc": "Joey"
 		},
@@ -858,7 +858,7 @@
 			"country": "US",
 			"language": "en",
 			"gender": "M",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon US English (Joey)",
 			"lang": "en-US",
 			"desc": "Joey (TTSTool)"
@@ -867,7 +867,7 @@
 			"country": "US",
 			"language": "en",
 			"gender": "F",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/english/american/2-girl-s-voice-sally.html",
 			"desc": "Salli"
 		},
@@ -875,7 +875,7 @@
 			"country": "US",
 			"language": "en",
 			"gender": "F",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon US English (Salli)",
 			"lang": "en-US",
 			"desc": "Salli (TTSTool)"
@@ -884,7 +884,7 @@
 			"country": "US",
 			"language": "en",
 			"gender": "F",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/english/american/33-female-voice-kimberly.html",
 			"desc": "Kimberly"
 		},
@@ -892,7 +892,7 @@
 			"country": "US",
 			"language": "en",
 			"gender": "F",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon US English (Kimberly)",
 			"lang": "en-US",
 			"desc": "Kimberly (TTSTool)"
@@ -901,7 +901,7 @@
 			"country": "US",
 			"language": "es",
 			"gender": "M",
-			"source": "pollyold2",
+			"source": "readaloud",
 			"arg": "Amazon US Spanish (Miguel)",
 			"lang": "es-US",
 			"desc": "Miguel (TTSTool)"
@@ -910,7 +910,7 @@
 			"country": "US",
 			"language": "es",
 			"gender": "F",
-			"source": "polly2",
+			"source": "pollytwo",
 			"arg": "Lupe",
 			"desc": "Lupe"
 		},
@@ -918,7 +918,7 @@
 			"country": "US",
 			"language": "es",
 			"gender": "F",
-  			"source": "pollyold2",          
+  			"source": "readaloud",          
 			"arg": "Amazon US Spanish (Penelope)",
 			"lang": "es-US",
 			"desc": "Penélope (TTSTool)"
@@ -927,7 +927,7 @@
 			"country": "GB",
 			"language": "cy",
 			"gender": "F",
-  			"source": "pollyold2",          
+  			"source": "readaloud",          
 			"arg": "Amazon Welsh (Gwyneth)",
 			"lang": "cy-GB",
 			"desc": "Gwyneth (TTSTool)"
@@ -936,7 +936,7 @@
 			"country": "GB",
 			"language": "en",
 			"gender": "M",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/english/welsh/21-male-voice-geraint.html",
 			"desc": "Geraint"
 		},
@@ -944,7 +944,7 @@
 			"country": "US",
 			"language": "en",
 			"gender": "M",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/english/american/3-male-voice-eric.html",
 			"desc": "Eric"
 		},
@@ -952,7 +952,7 @@
 			"country": "US",
 			"language": "en",
 			"gender": "F",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/english/american/28-female-voice-jennifer.html",
 			"desc": "Jennifer"
 		},
@@ -960,7 +960,7 @@
 			"country": "US",
 			"language": "en",
 			"gender": "M",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/english/american/49-funny-toy-voice-skippy-the-chipmunk.html",
 			"desc": "Chipmunk"
 		},
@@ -968,7 +968,7 @@
 			"country": "GB",
 			"language": "en",
 			"gender": "F",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/english/welsh/23-female-voice-gwyneth.html",
 			"desc": "Gwyneth"
 		},
@@ -976,7 +976,7 @@
 			"country": "PL",
 			"language": "pl",
 			"gender": "F",
-			"source": "pollyold",
+			"source": "readloud",
 			"arg": "/polish/9-kobiecy-glos-agnieszka.html",
 			"desc": "Agnieszka"
 		},
@@ -984,7 +984,7 @@
 			"country": "GB",
 			"language": "cy",
 			"gender": "M",
- 			"source": "pollyold2",
+ 			"source": "readaloud",
 			"arg": "Amazon Welsh (Geraint)",
 			"lang": "cy-GB",
 			"desc": "Geraint"
@@ -5492,7 +5492,7 @@
 			"country": "AU",
 			"language": "en",
 			"gender": "F",
-            "source": "onecore2",
+            "source": "onecoretwo",
 			"arg": "Zoe",
 			"lang": "en-au",
 			"desc": "Hayley"
@@ -5501,7 +5501,7 @@
 			"country": "AU",
 			"language": "en",
 			"gender": "F",
-            "source": "onecore2",
+            "source": "onecoretwo",
 			"arg": "Evie",
 			"lang": "en-au",
 			"desc": "Matilda (Microsoft)"
@@ -5546,7 +5546,7 @@
 			"country": "BR",
 			"language": "pt",
 			"gender": "F",
-            "source": "onecore2",
+            "source": "onecoretwo",
 			"arg": "Marcia",
 			"lang": "pt-br",
 			"desc": "Heloisa"
@@ -5555,7 +5555,7 @@
 			"country": "BR",
 			"language": "pt",
 			"gender": "F",
-            "source": "onecore2",
+            "source": "onecoretwo",
 			"arg": "Ligia",
 			"lang": "pt-br",
 			"desc": "Ana (Microsoft)"
@@ -5591,7 +5591,7 @@
 			"country": "GB",
 			"language": "en",
 			"gender": "F",
-            "source": "onecore2",
+            "source": "onecoretwo",
 			"arg": "Nancy",
 			"lang": "en-gb",
 			"desc": "Sarah (Microsoft)"
@@ -5635,7 +5635,7 @@
 			"country": "CA",
 			"language": "en",
 			"gender": "F",
-            "source": "onecore2",
+            "source": "onecoretwo",
 			"arg": "Clara",
 			"lang": "en-ca",
 			"desc": "Eva"
@@ -5671,7 +5671,7 @@
 			"country": "CA",
 			"language": "fr",
 			"gender": "F",
-            "source": "onecore2",
+            "source": "onecoretwo",
 			"arg": "Emile",
 			"lang": "fr-ca",
 			"desc": "Harmonie"
@@ -5716,7 +5716,7 @@
 			"country": "CN",
 			"language": "zh",
 			"gender": "F",
-            "source": "onecore2",
+            "source": "onecoretwo",
 			"arg": "Chow",
 			"lang": "zh-cn",
 			"desc": "Hongyu"
@@ -5743,7 +5743,7 @@
 			"country": "HK",
 			"language": "zh",
 			"gender": "F",
-            "source": "onecore2",
+            "source": "onecoretwo",
 			"arg": "Jia",
 			"lang": "zh-hk",
 			"desc": "HunYee"
@@ -5752,7 +5752,7 @@
 			"country": "TW",
 			"language": "zh",
 			"gender": "M",
-            "source": "onecore2",
+            "source": "onecoretwo",
 			"arg": "Lee",
 			"lang": "zh-tw",
 			"desc": "Zhiwei"
@@ -5761,7 +5761,7 @@
 			"country": "TW",
 			"language": "zh",
 			"gender": "F",
-            "source": "onecore2",
+            "source": "onecoretwo",
 			"arg": "Akemi",
 			"lang": "zh-tw",
 			"desc": "Hanhan"
@@ -5770,7 +5770,7 @@
 			"country": "TW",
 			"language": "zh",
 			"gender": "F",
-            "source": "onecore2",
+            "source": "onecoretwo",
 			"arg": "Lin",
 			"lang": "zh-tw",
 			"desc": "Yating"
@@ -5815,7 +5815,7 @@
 			"country": "NL",
 			"language": "nl",
 			"gender": "F",
-            "source": "onecore2",
+            "source": "onecoretwo",
 			"arg": "Lotte",
 			"lang": "nl-nl",
 			"desc": "Hanna"
@@ -5869,7 +5869,7 @@
 			"country": "FR",
 			"language": "fr",
 			"gender": "F",
-            "source": "onecore2",
+            "source": "onecoretwo",
 			"arg": "Iva",
 			"lang": "fr-fr",
 			"desc": "Nathalie"
@@ -5968,7 +5968,7 @@
 			"country": "IN",
 			"language": "en",
 			"gender": "F",
-            "source": "onecore2",
+            "source": "onecoretwo",
 			"arg": "Jai",
 			"lang": "en-in",
 			"desc": "Koyal"
@@ -6013,7 +6013,7 @@
 			"country": "IT",
 			"language": "it",
 			"gender": "F",
-            "source": "onecore2",
+            "source": "onecoretwo",
 			"arg": "Bria",
 			"lang": "it-it",
 			"desc": "Lucia"
@@ -6094,7 +6094,7 @@
 			"country": "MX",
 			"language": "es",
 			"gender": "F",
-            "source": "onecore2",
+            "source": "onecoretwo",
 			"arg": "Juana",
 			"lang": "es-mx",
 			"desc": "Hilda"
@@ -6103,7 +6103,7 @@
 			"country": "MX",
 			"language": "es",
 			"gender": "F",
-            "source": "onecore2",
+            "source": "onecoretwo",
 			"arg": "Silvia",
 			"lang": "es-mx",
 			"desc": "Mila"
@@ -6121,7 +6121,7 @@
 			"country": "no",
 			"language": "no",
 			"gender": "F",
-            "source": "onecore2",
+            "source": "onecoretwo",
 			"arg": "Marte",
 			"lang": "nb-no",
 			"desc": "Hulda (Microsoft)"
@@ -6184,7 +6184,7 @@
 			"country": "RU",
 			"language": "ru",
 			"gender": "F",
-            "source": "onecore2",
+            "source": "onecoretwo",
 			"arg": "Olga",
 			"lang": "ru-ru",
 			"desc": "Elena"
@@ -6247,7 +6247,7 @@
 			"country": "ES",
 			"language": "es",
 			"gender": "F",
-            "source": "onecore2",
+            "source": "onecoretwo",
 			"arg": "Luna",
 			"lang": "es-es",
 			"desc": "Ana (Microsoft)"
@@ -6265,7 +6265,7 @@
 			"country": "SE",
 			"language": "sv",
 			"gender": "F",
-            "source": "onecore2",
+            "source": "onecoretwo",
 			"arg": "Molly",
 			"lang": "sv-se",
 			"desc": "Hedvi"
@@ -6346,7 +6346,7 @@
 			"country": "US",
 			"language": "en",
 			"gender": "F",
-            "source": "onecore2",
+            "source": "onecoretwo",
 			"arg": "Linda",
 			"lang": "en-us",
 			"desc": "Helen"
@@ -6355,7 +6355,7 @@
 			"country": "US",
 			"language": "en",
 			"gender": "F",
-            "source": "onecore2",
+            "source": "onecoretwo",
 			"arg": "Mary",
 			"lang": "en-us",
 			"desc": "Eva"
@@ -6441,141 +6441,6 @@
 			"lang": "en_US",
 			"desc": "Michelle (Cobalt)"
 		},
-        "youdao-en": {
-            "country": "US",
-            "language": "en",
-            "gender": "F",
-            "arg": "en",
-			"type": "0",
-            "source": "youdao",
-            "desc": "US female (Youdao)"
-        },
-        "youdao-en-uk": {
-            "country": "GB",
-            "language": "en",
-            "gender": "F",
-            "arg": "en",
-			"type": "1",
-            "source": "youdao",
-            "desc": "UK female (Youdao)"
-        },
-        "youdao-ar": {
-            "country": "SA",
-            "language": "ar",
-            "gender": "F",
-            "arg": "ar",
-			"type": "0",
-            "source": "youdao",
-            "desc": "Arabic female (Youdao)"
-        },
-        "youdao-zh": {
-            "country": "CN",
-            "language": "zh",
-            "gender": "F",
-            "arg": "zh",
-			"type": "0",
-            "source": "youdao",
-            "desc": "Chinese female (Youdao)"
-        },
-        "youdao-nl": {
-			"country": "NL",
-			"language": "nl",
-            "gender": "F",
-            "arg": "nl",
-			"type": "0",
-            "source": "youdao",
-            "desc": "Dutch female (Youdao)"
-        },
-        "youdao-fr": {
-			"country": "FR",
-			"language": "fr",
-            "gender": "F",
-            "arg": "fr",
-			"type": "0",
-            "source": "youdao",
-            "desc": "French female (Youdao)"
-        },
-        "youdao-de": {
-			"country": "DE",
-			"language": "de",
-            "gender": "F",
-            "arg": "de",
-			"type": "0",
-            "source": "youdao",
-            "desc": "German female (Youdao)"
-        },
-        "youdao-id": {
-			"country": "ID",
-			"language": "id",
-            "gender": "F",
-            "arg": "id",
-			"type": "0",
-            "source": "youdao",
-            "desc": "Indonesian female (Youdao)"
-        },
-        "youdao-it": {
-			"country": "IT",
-			"language": "it",
-            "gender": "F",
-            "arg": "it",
-			"type": "0",
-            "source": "youdao",
-            "desc": "Italian female (Youdao)"
-        },
-        "youdao-ja": {
-			"country": "JP",
-			"language": "ja",
-            "gender": "F",
-            "arg": "ja",
-			"type": "0",
-            "source": "youdao",
-            "desc": "Japanese female (Youdao)"
-        },
-        "youdao-pt": {
-			"country": "PT",
-			"language": "pt",
-            "gender": "F",
-            "arg": "pt",
-			"type": "0",
-            "source": "youdao",
-            "desc": "Portuguese female (Youdao)"
-        },
-        "youdao-ru": {
-			"country": "RU",
-			"language": "ru",
-            "gender": "F",
-            "arg": "ru",
-			"type": "0",
-            "source": "youdao",
-            "desc": "Russsian female (Youdao)"
-        },
-        "youdao-es": {
-			"country": "ES",
-			"language": "es",
-            "gender": "F",
-            "arg": "es",
-			"type": "0",
-            "source": "youdao",
-            "desc": "Spanish female (Youdao)"
-        },
-        "youdao-th": {
-			"country": "TH",
-			"language": "th",
-            "gender": "F",
-            "arg": "th",
-			"type": "0",
-            "source": "youdao",
-            "desc": "Thai female (Youdao)"
-        },
-        "youdao-vi": {
-			"country": "VI",
-			"language": "vi",
-            "gender": "F",
-            "arg": "vi",
-			"type": "0",
-            "source": "youdao",
-            "desc": "Vietnamese female (Youdao)"
-        },
  		"julieold2": {
 			"country": "US",
 			"language": "en",
