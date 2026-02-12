@@ -89,9 +89,6 @@ function exitCCModal() {
 function charSaved(id:string) {
 	studio.value.loadCharacterById(id);
 }
-
-/* importer callbacks */
-
 function exitImporter() {
 	showImporter.value = false;
 	studio.value.importerStatus("clear");
@@ -124,9 +121,6 @@ function onImporterUploadSuccess(
 function onImportAddToScene(assetType:string, assetId:string) {
 	studio.value.importerAddAsset(assetType, assetId);
 }
-
-/* preview callbacks */
-
 function exitPreviewer() {
 	showPreviewer.value = false;
 }
@@ -144,24 +138,20 @@ function themeSelected(themeId:string) {
 
 onMounted(() => {
 	let showTutorial = false;
-	// @ts-ignore
 	window.studioLoaded = function (arg) {
 		console.log(arg)
 	}
-	//@ts-ignore
 	window.interactiveTutorial = {
 		neverDisplay: function() {
 			return !showTutorial;
 		}
 	};
-	//@ts-ignore
 	window.quitStudio = function (skipAsk:boolean) {
 		const shouldQuit = skipAsk || confirm("Are you sure you want to exit the studio? You may have unsaved changes");
 		if (shouldQuit) {
 			router.push("/");
 		}
 	};
-	//@ts-ignore
 	window.restartTutorial = function () {
 		showTutorial = true;
 		showObject.value = false;
@@ -169,7 +159,6 @@ onMounted(() => {
 			showObject.value = true;
 		}, 55);
 	}
-	//@ts-ignore
 	window.initPreviewPlayer = function (movieXml:string, startFrame:number) {
 		showPreviewer.value = true;
 		showImporter.value = false;
@@ -177,19 +166,16 @@ onMounted(() => {
 			previewModal.value.displayPlayer(movieXml, startFrame);
 		}, 55);
 	};
-	//@ts-ignore
 	window.createCharacter = function (themeId:string) {
 		showCCModal.value = true;
 		showImporter.value = false;
 		ccModal.value.displayBrowser(themeId);
 	}
-	//@ts-ignore
 	window.copyCharacter = function (themeId:string, assetId:string) {
 		showCCModal.value = true;
 		showImporter.value = false;
 		ccModal.value.copyCharacter(themeId, assetId);
 	}
-	//@ts-ignore
 	window.showImporter = function () {
 		if (toValue(showImporter) == false) {
 			showImporter.value = true;
@@ -199,21 +185,13 @@ onMounted(() => {
 	};
 });
 onUnmounted(() => {
-	// @ts-ignore
 	delete window.studioLoaded;
-	//@ts-ignore
 	delete window.interactiveTutorial;
-	//@ts-ignore
 	delete window.quitStudio;
-	//@ts-ignore
 	delete window.restartTutorial;
-	//@ts-ignore
 	delete window.initPreviewPlayer;
-	//@ts-ignore
 	delete window.createCharacter;
-	//@ts-ignore
 	delete window.copyCharacter;
-	//@ts-ignore
 	delete window.showImporter;
 });
 
@@ -234,7 +212,7 @@ if (movieId) {
 
 <template>
 	<div id="full_page_container" :class="{ popup_mode: showPreviewer || showCCModal }">
-		<ThemeSelector heading-for="Create a video" v-if="showSelector" @theme-clicked="(theme) => themeSelected(theme.id)"/>
+		<ThemeSelector heading-for="Make a video" v-if="showSelector" @theme-clicked="(theme) => themeSelected(theme.id)"/>
 		<main>
 			<AssetImporter
 				v-show="showImporter"
