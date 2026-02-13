@@ -11,7 +11,8 @@ group.route("*", /\/videomaker\/full\/(\w+)\/tutorial$/, (req, res) => {
 	res.redirect(`/go_full?tray=${theme}&tutorial=0`);
 });
 group.route("GET", "/dashboard/videos", (req, res) => {
-	res.redirect("/videos");
+    res.setHeader("Content-Type", "text/html");
+    res.end("<script>window.appWindow.goHome();</script>");
 });
 group.route("*", /\/file\/movie\/thumb\/([^/]+)$/, (req, res) => {
 	const id = req.matches[1];
@@ -244,7 +245,6 @@ group.route("POST", ["/goapi/saveMovie/", "/goapi/saveTemplate/"], async (req, r
 	const movieId = req.body.movieId;
 	const thumbField = req.body.thumbnail_large;
 	const trigAutosave = req.body.is_triggered_by_autosave;
-
 	if (!thumbField) {
 		if (trigAutosave && !movieId) {
 			return res.end("0");
@@ -253,19 +253,14 @@ group.route("POST", ["/goapi/saveMovie/", "/goapi/saveTemplate/"], async (req, r
 			return res.status(400).end("No is_triggered_by_autosave, expected thumbnail_large field");
 		}
 	}
-
 	const body = Buffer.from(zipField, "base64");
 	let thumb: Buffer | void;
 	if (thumbField) {
 		thumb = Buffer.from(thumbField, "base64");
 	}
-
 	if (!body.subarray(0, 4).equals(Buffer.from([0x50, 0x4b, 0x03, 0x04]))) {
 		return res.status(400).end("body_zip is not a ZIP");
 	}
-
-	res.log(`Saving movie ${movieId || "<new movie>"}...`);
-
 	try {
 		const zip = new AdmZip(body);
 		const movieXml = zip.readFile("movie.xml");

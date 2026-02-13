@@ -98,6 +98,9 @@ const createWindow = () => {
 	ipcMain.on("open-faq", openFaq);
 	ipcMain.on("open-github", openGitHub);
 	ipcMain.on("open-data-folder", openDataFolder);
+	ipcMain.on("go-home", () => {
+    mainWindow.loadURL(root);
+    });
 
 	let host:string, port:string;
 	if (IS_DEV) {
