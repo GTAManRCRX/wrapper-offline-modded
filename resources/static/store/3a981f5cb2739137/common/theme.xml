@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <theme id="common" name="Common">
-	<char id="matchBoyNew" name="Match Boy" thumb="stand.swf" facing="left" default="stand.swf" motion="walk.swf" enable="Y" is_premium="N" aid="3056" money="0" sharing="0">
+	<char id="matchBoyNew" name="Match boy" thumb="stand.swf" facing="left" default="stand.swf" motion="walk.swf" enable="Y" is_premium="N" aid="3056" money="0" sharing="0">
 		<category name="emotion">
-			<action id="angry.swf" name="angry" loop="Y" totalframe="50" enable="Y" aid="3059"/>
-			<action id="confused.swf" name="confused" loop="Y" totalframe="70" enable="Y" aid="3060"/>
-			<action id="excited.swf" name="excited" loop="Y" totalframe="75" enable="Y" aid="3061"/>
-			<action id="scared.swf" name="scared" loop="Y" totalframe="2" enable="Y" aid="3062"/>
-			<action id="furious.swf" name="furious" loop="Y" totalframe="100" enable="Y" aid="3063"/>
-			<action id="happy.swf" name="happy" loop="Y" totalframe="60" enable="Y" aid="3064"/>
+			<action id="angry.swf" name="Angry" loop="Y" totalframe="50" enable="Y" aid="3059"/>
+			<action id="confused.swf" name="Confused" loop="Y" totalframe="70" enable="Y" aid="3060"/>
+			<action id="excited.swf" name="Excited" loop="Y" totalframe="75" enable="Y" aid="3061"/>
+			<action id="scared.swf" name="Scared" loop="Y" totalframe="2" enable="Y" aid="3062"/>
+			<action id="furious.swf" name="Furious" loop="Y" totalframe="100" enable="Y" aid="3063"/>
+			<action id="happy.swf" name="Happy" loop="Y" totalframe="60" enable="Y" aid="3064"/>
 			<action id="in_love.swf" name="In love" loop="Y" totalframe="100" enable="Y" aid="3065"/>
-			<action id="sad.swf" name="sad" loop="N" totalframe="70" enable="Y" aid="3066"/>
-			<action id="scheming.swf" name="scheming" loop="Y" totalframe="75" enable="Y" aid="3067"/>
-			<action id="shocked.swf" name="shocked" loop="Y" totalframe="2" enable="Y" aid="3068"/>
-			<action id="shy.swf" name="shy" loop="Y" totalframe="50" enable="Y" aid="3069"/>
-			<action id="desperate.swf" name="desperate" loop="Y" totalframe="43" enable="Y" aid="3070"/>
-			<action id="bored.swf" name="bored" loop="Y" totalframe="130" enable="Y" aid="3071"/>
+			<action id="sad.swf" name="Sad" loop="N" totalframe="70" enable="Y" aid="3066"/>
+			<action id="scheming.swf" name="Scheming" loop="Y" totalframe="75" enable="Y" aid="3067"/>
+			<action id="shocked.swf" name="Shocked" loop="Y" totalframe="2" enable="Y" aid="3068"/>
+			<action id="shy.swf" name="Shy" loop="Y" totalframe="50" enable="Y" aid="3069"/>
+			<action id="desperate.swf" name="Desperate" loop="Y" totalframe="43" enable="Y" aid="3070"/>
+			<action id="bored.swf" name="Bored" loop="Y" totalframe="130" enable="Y" aid="3071"/>
 		</category>
 		<action id="stand.swf" name="Stand" loop="Y" totalframe="72" enable="Y" aid="3057"/>
 		<motion id="walk.swf" name="Walk" loop="Y" totalframe="8" enable="Y" aid="3058"/>
@@ -24,39 +24,39 @@
 		<action id="kiss.swf" name="Kiss" loop="Y" totalframe="54" enable="Y" aid="3075"/>
 		<action id="laugh.swf" name="Laugh" loop="Y" totalframe="3" enable="Y" aid="3076"/>
 		<action id="talk.swf" name="Talk" loop="Y" totalframe="48" enable="Y" aid="3077"/>
-		<action id="threaten.swf" name="Become Threatened" loop="Y" totalframe="2" enable="Y" aid="3078"/>
-		<action id="propose.swf" name="Propose (a)" loop="Y" totalframe="40" enable="Y" aid="3079"/>
-		<action id="propose02.swf" name="Propose (b)" loop="Y" totalframe="45" enable="Y" aid="3080"/>
-		<action id="murder01.swf" name="Murdered (a)" loop="Y" totalframe="42" enable="Y" aid="3081"/>
-		<action id="murder02.swf" name="Murdered (b)" loop="Y" totalframe="50" enable="Y" aid="3082"/>
+		<action id="threaten.swf" name="Become threatened" loop="Y" totalframe="2" enable="Y" aid="3078"/>
+		<action id="propose.swf" name="Propose (A)" loop="Y" totalframe="40" enable="Y" aid="3079"/>
+		<action id="propose02.swf" name="Propose (B)" loop="Y" totalframe="45" enable="Y" aid="3080"/>
+		<action id="murder01.swf" name="Murdered (A)" loop="Y" totalframe="42" enable="Y" aid="3081"/>
+		<action id="murder02.swf" name="Murdered (B)" loop="Y" totalframe="50" enable="Y" aid="3082"/>
 		<action id="kill06.swf" name="Kill" loop="Y" totalframe="20" enable="Y" aid="3083"/>
 	</char>
-	<char id="matchGirl" name="Match Girl" thumb="stand.swf" facing="left" default="stand.swf" motion="walk.swf" enable="Y" is_premium="N" aid="3084" money="0" sharing="0">
+	<char id="matchGirl" name="Match girl" thumb="stand.swf" facing="left" default="stand.swf" motion="walk.swf" enable="Y" is_premium="N" aid="3084" money="0" sharing="0">
 		<category name="emotion">
-			<action id="angry.swf" name="angry" loop="Y" totalframe="50" enable="Y" aid="3087"/>
-			<action id="confused.swf" name="confused" loop="Y" totalframe="70" enable="Y" aid="3088"/>
-			<action id="excited.swf" name="excited" loop="Y" totalframe="75" enable="Y" aid="3089"/>
-			<action id="scared.swf" name="scared" loop="Y" totalframe="2" enable="Y" aid="3090"/>
-			<action id="furious.swf" name="furious" loop="Y" totalframe="100" enable="Y" aid="3091"/>
-			<action id="happy.swf" name="happy" loop="Y" totalframe="60" enable="Y" aid="3092"/>
+			<action id="angry.swf" name="Angry" loop="Y" totalframe="50" enable="Y" aid="3087"/>
+			<action id="confused.swf" name="Confused" loop="Y" totalframe="70" enable="Y" aid="3088"/>
+			<action id="excited.swf" name="Excited" loop="Y" totalframe="75" enable="Y" aid="3089"/>
+			<action id="scared.swf" name="Scared" loop="Y" totalframe="2" enable="Y" aid="3090"/>
+			<action id="furious.swf" name="Furious" loop="Y" totalframe="100" enable="Y" aid="3091"/>
+			<action id="happy.swf" name="Happy" loop="Y" totalframe="60" enable="Y" aid="3092"/>
 			<action id="in_love.swf" name="In love" loop="Y" totalframe="100" enable="Y" aid="3093"/>
-			<action id="sad.swf" name="sad" loop="N" totalframe="70" enable="Y" aid="3094"/>
-			<action id="scheming.swf" name="scheming" loop="Y" totalframe="75" enable="Y" aid="3095"/>
-			<action id="shocked.swf" name="shocked" loop="Y" totalframe="2" enable="Y" aid="3096"/>
-			<action id="desperate.swf" name="desperate" loop="Y" totalframe="43" enable="Y" aid="3097"/>
-			<action id="bored.swf" name="bored" loop="Y" totalframe="130" enable="Y" aid="3098"/>
+			<action id="sad.swf" name="Sad" loop="N" totalframe="70" enable="Y" aid="3094"/>
+			<action id="scheming.swf" name="Scheming" loop="Y" totalframe="75" enable="Y" aid="3095"/>
+			<action id="shocked.swf" name="Shocked" loop="Y" totalframe="2" enable="Y" aid="3096"/>
+			<action id="desperate.swf" name="Desperate" loop="Y" totalframe="43" enable="Y" aid="3097"/>
+			<action id="bored.swf" name="Bored" loop="Y" totalframe="130" enable="Y" aid="3098"/>
 		</category>
 		<action id="stand.swf" name="Stand" loop="Y" totalframe="4" enable="Y" aid="3085"/>
 		<motion id="walk.swf" name="Walk" loop="Y" totalframe="58" enable="Y" aid="3086"/>
 		<action id="kiss.swf" name="Kiss" loop="Y" totalframe="35" enable="Y" aid="3099"/>
 		<action id="talk.swf" name="Talk" loop="Y" totalframe="50" enable="Y" aid="3100"/>
-		<action id="murder01.swf" name="Murdered (a)" loop="Y" totalframe="35" enable="Y" aid="3101"/>
-		<action id="murder02.swf" name="Murdered (b)" loop="Y" totalframe="70" enable="Y" aid="3102"/>
+		<action id="murder01.swf" name="Murdered (A)" loop="Y" totalframe="35" enable="Y" aid="3101"/>
+		<action id="murder02.swf" name="Murdered (B)" loop="Y" totalframe="70" enable="Y" aid="3102"/>
 		<action id="shy.swf" name="Shy" loop="Y" totalframe="16" enable="Y" aid="3103"/>
-		<action id="dance01.swf" name="Dance (a)" loop="Y" totalframe="25" enable="Y" aid="3104"/>
-		<action id="dance02.swf" name="Dance (b)" loop="Y" totalframe="13" enable="Y" aid="3105"/>
-		<action id="greeting.swf" name="Greeting (a)" loop="Y" totalframe="65" enable="Y" aid="3106"/>
-		<action id="greeting02.swf" name="Greeting (b)" loop="Y" totalframe="75" enable="Y" aid="3107"/>
+		<action id="dance01.swf" name="Dance (A)" loop="Y" totalframe="25" enable="Y" aid="3104"/>
+		<action id="dance02.swf" name="Dance (B)" loop="Y" totalframe="13" enable="Y" aid="3105"/>
+		<action id="greeting.swf" name="Greeting (A)" loop="Y" totalframe="65" enable="Y" aid="3106"/>
+		<action id="greeting02.swf" name="Greeting (B)" loop="Y" totalframe="75" enable="Y" aid="3107"/>
 		<action id="sing.swf" name="Sing" loop="Y" totalframe="24" enable="Y" aid="3108"/>
 		<action id="think.swf" name="Think" loop="Y" totalframe="75" enable="Y" aid="3109"/>
 		<action id="cry.swf" name="Cry" loop="Y" totalframe="24" enable="Y" aid="3110"/>
@@ -64,11 +64,11 @@
 	<background id="street.swf" name="Street" enable="Y" is_premium="N" aid="3111" money="0" sharing="0"/>
 	<background id="toilet_clean.swf" name="Toilet" enable="Y" is_premium="N" aid="3112" money="0" sharing="0"/>
 	<background id="color_bar.swf" name="Color bar" enable="Y" is_premium="N" aid="3113" money="0" sharing="0"/>
-	<background id="tvsnowflask.swf" name="TV Noise" enable="Y" is_premium="N" aid="3114" money="0" sharing="0"/>
-	<background id="countdown.swf" name="Count down" enable="Y" is_premium="N" aid="3115" money="0" sharing="0"/>
+	<background id="tvsnowflask.swf" name="TV noise" enable="Y" is_premium="N" aid="3114" money="0" sharing="0"/>
+	<background id="countdown.swf" name="Countdown" enable="Y" is_premium="N" aid="3115" money="0" sharing="0"/>
 	<background id="credit.swf" name="Credit" enable="Y" is_premium="N" aid="3116" money="0" sharing="0"/>
 	<background id="backStage.swf" name="Backstage" enable="Y" default="N" is_premium="N" aid="3117" money="0" sharing="0"/>
-	<background id="toilet_dirty.swf" name="Dirty Toilet" enable="Y" is_premium="N" aid="3118" money="0" sharing="0"/>
+	<background id="toilet_dirty.swf" name="Dirty toilet" enable="Y" is_premium="N" aid="3118" money="0" sharing="0"/>
 	<background id="boxing_bg.swf" name="Boxing ring" enable="Y" default="N" is_premium="N" aid="3119" money="0" sharing="0"/>
 	<background id="dinner_restaurant_bg.swf" name="Restaurant" enable="Y" is_premium="N" aid="3120" money="0" sharing="0"/>
 	<background id="school_classroom_bg.swf" name="Classroom" enable="Y" is_premium="N" aid="3121" money="0" sharing="0"/>
@@ -79,54 +79,54 @@
 	<background id="jail_bg_v1.swf" name="Jail" enable="Y" is_premium="N" aid="3126" money="0" sharing="0"/>
 	<background id="airplane_inside_bg.swf" name="Airplane" enable="Y" is_premium="N" aid="3127" money="0" sharing="0"/>
 	<background id="moon.swf" name="Moon" enable="Y" is_premium="N" aid="3128" money="0" sharing="0"/>
-	<background id="elevator_inside_bg.swf" name="Elevator Inside" enable="Y" is_premium="N" aid="3129" money="0" sharing="0"/>
-	<background id="elevator_outside.swf" name="Elevator Outside" enable="Y" is_premium="N" aid="3130" money="0" sharing="0"/>
+	<background id="elevator_inside_bg.swf" name="Elevator inside" enable="Y" is_premium="N" aid="3129" money="0" sharing="0"/>
+	<background id="elevator_outside.swf" name="Elevator outside" enable="Y" is_premium="N" aid="3130" money="0" sharing="0"/>
 	<background id="airport_bg.swf" name="Airport" enable="Y" is_premium="N" aid="3131" money="0" sharing="0"/>
-	<background id="boss' office_bg.swf" name="Boss Office" enable="Y" is_premium="N" aid="3132" money="0" sharing="0"/>
+	<background id="boss' office_bg.swf" name="Boss office" enable="Y" is_premium="N" aid="3132" money="0" sharing="0"/>
 	<background id="girl_bedroom_bg.swf" name="Girl bedroom" enable="Y" is_premium="N" aid="3133" money="0" sharing="0"/>
 	<background id="old_couple_bedroom_bg.swf" name="Old couple bedroom" enable="Y" is_premium="N" aid="3134" money="0" sharing="0"/>
 	<background id="school_entrance_bg.swf" name="School entrance" enable="Y" is_premium="N" aid="3135" money="0" sharing="0"/>
 	<background id="kitchen_bg.swf" name="Kitchen" enable="Y" is_premium="N" aid="3136" money="0" sharing="0"/>
-	<background id="conference_room_bg.swf" name="Conference Room" enable="Y" is_premium="N" aid="3137" money="0" sharing="0"/>
+	<background id="conference_room_bg.swf" name="Conference room" enable="Y" is_premium="N" aid="3137" money="0" sharing="0"/>
 	<background id="spacious_cubicle_bg.swf" name="Spacious cubicle" enable="Y" default="N" is_premium="N" aid="3138" money="0" sharing="0"/>
 	<background id="cramped_cubicle_bg.swf" name="Cramped cubicle" enable="Y" default="N" is_premium="N" aid="3139" money="0" sharing="0"/>
 	<background id="office_corridor_bg.swf" name="Office corridor" enable="Y" is_premium="N" aid="3140" money="0" sharing="0"/>
 	<background id="boss_reception_bg.swf" name="Boss reception" enable="Y" is_premium="N" aid="3141" money="0" sharing="0"/>
 	<background id="student_cafeteria_bg.swf" name="Student cafeteria" enable="Y" is_premium="N" aid="3142" money="0" sharing="0"/>
 	<background id="chapel_bg.swf" name="Chapel" enable="Y" is_premium="N" aid="3143" money="0" sharing="0"/>
-	<background id="chemistry_lab_bg.swf" name="Chemistry Lab" enable="Y" is_premium="N" aid="3144" money="0" sharing="0"/>
+	<background id="chemistry_lab_bg.swf" name="Chemistry lab" enable="Y" is_premium="N" aid="3144" money="0" sharing="0"/>
 	<background id="donut_shop_bg.swf" name="Donut shop" enable="Y" is_premium="N" aid="3145" money="0" sharing="0"/>
 	<background id="living_room_bg.swf" name="Living room" enable="Y" is_premium="N" aid="3146" money="0" sharing="0"/>
 	<background id="boy_bedroom_bg.swf" name="Boy bedroom" enable="Y" is_premium="N" aid="3147" money="0" sharing="0"/>
 	<background id="hopsital_ward_bg.swf" name="Hopsital ward" enable="Y" is_premium="N" aid="3148" money="0" sharing="0"/>
 	<background id="doctor_office_bg.swf" name="Doctor's office" enable="Y" is_premium="N" aid="3149" money="0" sharing="0"/>
 	<background id="Diner_bg.swf" name="Diner" enable="Y" is_premium="N" aid="3150" money="0" sharing="0"/>
-	<background id="battlefield.swf" name="BattleField" enable="Y" is_premium="N" aid="3151" money="0" sharing="0"/>
-	<background id="backyard.swf" name="backyard" enable="Y" is_premium="N" aid="3152" money="0" sharing="0"/>
-	<background id="train_station.swf" name="train station" enable="Y" is_premium="N" aid="3153" money="0" sharing="0"/>
-	<background id="garage.swf" name="garage" enable="Y" is_premium="N" aid="3154" money="0" sharing="0"/>
-	<background id="cemetery_bg.swf" name="cemetery" enable="Y" is_premium="N" aid="3155" money="0" sharing="0"/>
-	<background id="pirate_ship_deck_bg.swf" name="Pirate Ship deck" enable="Y" is_premium="N" aid="3156" money="0" sharing="0"/>
+	<background id="battlefield.swf" name="Battlefield" enable="Y" is_premium="N" aid="3151" money="0" sharing="0"/>
+	<background id="backyard.swf" name="Backyard" enable="Y" is_premium="N" aid="3152" money="0" sharing="0"/>
+	<background id="train_station.swf" name="Train station" enable="Y" is_premium="N" aid="3153" money="0" sharing="0"/>
+	<background id="garage.swf" name="Garage" enable="Y" is_premium="N" aid="3154" money="0" sharing="0"/>
+	<background id="cemetery_bg.swf" name="Cemetery" enable="Y" is_premium="N" aid="3155" money="0" sharing="0"/>
+	<background id="pirate_ship_deck_bg.swf" name="Pirate ship deck" enable="Y" is_premium="N" aid="3156" money="0" sharing="0"/>
 	<background id="Presidential_podium_bg.swf" name="Presidential podium" enable="Y" is_premium="N" aid="3157" money="0" sharing="0"/>
-	<background id="presidential_desk_bg.swf" name="Presidential Desk" enable="Y" is_premium="N" aid="3158" money="0" sharing="0"/>
-	<background id="spooky_lab_bg.swf" name="Spooky Lab" enable="Y" is_premium="N" aid="3159" money="0" sharing="0"/>
+	<background id="presidential_desk_bg.swf" name="Presidential desk" enable="Y" is_premium="N" aid="3158" money="0" sharing="0"/>
+	<background id="spooky_lab_bg.swf" name="Spooky lab" enable="Y" is_premium="N" aid="3159" money="0" sharing="0"/>
 	<background id="graveyard_bg.swf" name="Graveyard" enable="Y" is_premium="N" aid="3160" money="0" sharing="0"/>
-	<background id="evil_lair_bg.swf" name="evil_lair" enable="Y" is_premium="N" aid="3161" money="0" sharing="0"/>
-	<background id="stage_bg.swf" name="stage" enable="Y" is_premium="N" aid="3162" money="0" sharing="0"/>
-	<background id="flashing.swf" name="flashing" enable="Y" is_premium="N" aid="4001" money="0" sharing="0"/>
-	<background id="diner_sitting_area_bg.swf" name="" enable="Y" is_premium="N" aid="4737" money="0" sharing="0"/>
-	<background id="rooftop_bg.swf" name="" enable="Y" is_premium="N" aid="4738" money="0" sharing="0"/>
-	<background id="space_bg.swf" name="" enable="Y" is_premium="N" aid="4739" money="0" sharing="0"/>
-	<background id="volcanic_planet_bg.swf" name="" enable="Y" is_premium="N" aid="4740" money="0" sharing="0"/>
-	<background id="twilight.swf" name="twilight" enable="Y" is_premium="N" aid="4741" money="0" sharing="0"/>
-	<background id="world_map.swf" name="World Map" enable="Y" is_premium="N" aid="4768" money="0" sharing="0"/>
+	<background id="evil_lair_bg.swf" name="Evil lair" enable="Y" is_premium="N" aid="3161" money="0" sharing="0"/>
+	<background id="stage_bg.swf" name="Stage" enable="Y" is_premium="N" aid="3162" money="0" sharing="0"/>
+	<background id="flashing.swf" name="Flashing" enable="Y" is_premium="N" aid="4001" money="0" sharing="0"/>
+	<background id="diner_sitting_area_bg.swf" name="Diner sitting area" enable="Y" is_premium="N" aid="4737" money="0" sharing="0"/>
+	<background id="rooftop_bg.swf" name="Rooftop" enable="Y" is_premium="N" aid="4738" money="0" sharing="0"/>
+	<background id="space_bg.swf" name="Space" enable="Y" is_premium="N" aid="4739" money="0" sharing="0"/>
+	<background id="volcanic_planet_bg.swf" name="Volcanic planet" enable="Y" is_premium="N" aid="4740" money="0" sharing="0"/>
+	<background id="twilight.swf" name="Twilight" enable="Y" is_premium="N" aid="4741" money="0" sharing="0"/>
+	<background id="world_map.swf" name="World map" enable="Y" is_premium="N" aid="4768" money="0" sharing="0"/>
 	<background id="ncc_floor.swf" name="Floor" enable="Y" default="N" is_premium="N" aid="10673" money="0" sharing="0"/>
 	<background id="ncc_gradient.swf" name="Gradient" enable="Y" default="N" is_premium="N" aid="10674" money="0" sharing="0"/>
-	<background id="ncc_high.swf" name="High Horizon" enable="Y" default="N" is_premium="N" aid="10675" money="0" sharing="0"/>
+	<background id="ncc_high.swf" name="High horizon" enable="Y" default="N" is_premium="N" aid="10675" money="0" sharing="0"/>
 	<background id="ncc_interior_left.swf" name="Interior left" enable="Y" default="N" is_premium="N" aid="10676" money="0" sharing="0"/>
 	<background id="ncc_interior_right.swf" name="Interior right" enable="Y" default="N" is_premium="N" aid="10677" money="0" sharing="0"/>
-	<background id="ncc_low.swf" name="Low Horizon" enable="Y" default="N" is_premium="N" aid="10678" money="0" sharing="0"/>
-	<background id="ncc_medium.swf" name="Medium Horizon" enable="Y" default="N" is_premium="N" aid="10679" money="0" sharing="0"/>
+	<background id="ncc_low.swf" name="Low horizon" enable="Y" default="N" is_premium="N" aid="10678" money="0" sharing="0"/>
+	<background id="ncc_medium.swf" name="Medium horizon" enable="Y" default="N" is_premium="N" aid="10679" money="0" sharing="0"/>
 	<background id="ncc_interior_left02.swf" name="Interior left" enable="Y" default="N" is_premium="N" aid="10680" money="0" sharing="0"/>
 	<background id="ncc_interior_right02.swf" name="Interior right" enable="Y" default="N" is_premium="N" aid="10681" money="0" sharing="0"/>
 	<background id="wall01.swf" name="Brick wall" enable="Y" default="N" is_premium="Y" aid="10775" money="0" sharing="0"/>
@@ -137,7 +137,7 @@
 	<background id="wall06.swf" name="Dotted floor" enable="Y" default="N" is_premium="N" aid="10780" money="0" sharing="0"/>
 	<background id="wall07.swf" name="Striped wallpaper" enable="Y" default="N" is_premium="Y" aid="10781" money="0" sharing="0"/>
 	<background id="wall08.swf" name="Flashing floor" enable="Y" default="N" is_premium="Y" aid="10782" money="0" sharing="0"/>
-	<background id="star_night.swf" name="starry night" enable="Y" default="N" is_premium="N" aid="10783" money="0" sharing="0"/>
+	<background id="star_night.swf" name="Starry night" enable="Y" default="N" is_premium="N" aid="10783" money="0" sharing="0"/>
 	<background id="ncc_wall09_left.swf" name="Teak flooring" enable="Y" default="N" is_premium="N" aid="10898" money="0" sharing="0"/>
 	<background id="ncc_wall09_right.swf" name="Teak flooring" enable="Y" default="N" is_premium="N" aid="10899" money="0" sharing="0"/>
 	<background id="wall_09.swf" name="Two-color wall" enable="Y" default="N" is_premium="N" aid="11059" money="0" sharing="0"/>
@@ -184,8 +184,8 @@
 	<background id="wall30.swf" name="Linear gradient" enable="Y" default="N" is_premium="N" aid="12163" money="0" sharing="0"/>
 	<background id="wall31.swf" name="Radial gradient" enable="Y" default="N" is_premium="N" aid="12164" money="0" sharing="0"/>
 	<background id="ncc_hilltop_bg.swf" name="Grassland" enable="Y" default="N" is_premium="N" aid="12222" money="0" sharing="0"/>
-	<background id="wall33.swf" name="pattern" enable="Y" default="N" is_premium="N" aid="12324" money="0" sharing="0"/>
-	<background id="wall32.swf" name="effect" enable="Y" default="N" is_premium="N" aid="12325" money="0" sharing="0"/>
+	<background id="wall33.swf" name="Pattern" enable="Y" default="N" is_premium="N" aid="12324" money="0" sharing="0"/>
+	<background id="wall32.swf" name="Effect" enable="Y" default="N" is_premium="N" aid="12325" money="0" sharing="0"/>
 	<background id="ncc_gate.swf" name="Metal doors" enable="Y" default="N" is_premium="N" aid="12326" money="0" sharing="0"/>
 	<background id="ncc_fx_01.swf" name="Moody" enable="Y" default="N" is_premium="Y" aid="12355" money="0" sharing="0"/>
 	<background id="ncc_fx_02.swf" name="Depressed" enable="Y" default="N" is_premium="Y" aid="12356" money="0" sharing="0"/>
@@ -19652,32 +19652,32 @@
 			text</text>
 	</bubble>
 	<effect id="ncc_jp_sakura.swf" type="ANIME" resize="false" move="false" name="Sakura" enable="Y" is_premium="N" aid="23194" money="0" sharing="0" display_order="0"/>
-	<effect id="ncc_sci002fx.swf" type="ANIME" resize="false" move="false" name="Snow storm" enable="Y" is_premium="N" aid="23186" money="0" sharing="0" display_order="0"/>
+	<effect id="ncc_sci002fx.swf" type="ANIME" resize="false" move="false" name="Snowstorm" enable="Y" is_premium="N" aid="23186" money="0" sharing="0" display_order="0"/>
 	<effect id="ncc_sci003fx.swf" type="ANIME" resize="false" move="false" name="Screenviewer" enable="Y" is_premium="N" aid="23187" money="0" sharing="0" display_order="0"/>
 	<effect id="ncc_sci004fx.swf" type="ANIME" resize="false" move="false" name="Red alert" enable="Y" is_premium="N" aid="23188" money="0" sharing="0" display_order="0"/>
 	<effect id="ncc_fx_scifi.swf" type="ANIME" resize="false" move="false" name="Analyzing specimen" enable="Y" is_premium="N" aid="23185" money="0" sharing="0" display_order="0"/>
-	<effect id="ncc_sci005fx.swf" type="ANIME" resize="false" move="false" name="Ceiling Crumbling" enable="Y" is_premium="N" aid="23189" money="0" sharing="0" display_order="0"/>
+	<effect id="ncc_sci005fx.swf" type="ANIME" resize="false" move="false" name="Ceiling crumbling" enable="Y" is_premium="N" aid="23189" money="0" sharing="0" display_order="0"/>
 	<effect id="spray.swf" type="ANIME" resize="false" move="false" name="Spray" enable="Y" is_premium="N" aid="10965" money="0" sharing="0" display_order="0"/>
 	<effect id="ncc_ninja_fx02.swf" type="ANIME" resize="false" move="false" name="Hit" enable="Y" is_premium="N" aid="23191" money="0" sharing="0" display_order="0"/>
 	<effect id="ncc_ninja_fx04.swf" type="ANIME" resize="false" move="false" name="Purple petals" enable="Y" is_premium="N" aid="23193" money="0" sharing="0" display_order="0"/>
-	<effect id="fade_in.swf" type="ANIME" resize="false" move="false" name="Fade In" enable="Y" is_premium="N" aid="3454" money="0" sharing="0" display_order="0"/>
-	<effect id="fade_out.swf" type="ANIME" resize="false" move="false" name="Fade Out" enable="Y" is_premium="N" aid="3455" money="0" sharing="0" display_order="0"/>
+	<effect id="fade_in.swf" type="ANIME" resize="false" move="false" name="Fade in" enable="Y" is_premium="N" aid="3454" money="0" sharing="0" display_order="0"/>
+	<effect id="fade_out.swf" type="ANIME" resize="false" move="false" name="Fade out" enable="Y" is_premium="N" aid="3455" money="0" sharing="0" display_order="0"/>
 	<effect id="zoom" x="0" y="0" w="275" h="177" rotate="0" type="ZOOM" resize="true" move="true" name="Zoom" enable="Y" is_premium="N" aid="3432" money="0" sharing="0" display_order="1"/>
 	<effect id="cut" x="0" y="0" w="275" h="177" rotate="0" type="ZOOM" resize="true" move="true" name="Cut" enable="Y" isCut="true" is_premium="N" aid="3433" money="0" sharing="0" display_order="2"/>
 	<effect id="pan" x="0" y="0" w="275" h="177" rotate="0" type="ZOOM" resize="true" move="true" name="Pan" enable="Y" isPan="true" is_premium="N" aid="8233" money="0" sharing="0" display_order="4"/>
-	<effect id="black_bar.swf" type="ANIME" resize="false" move="false" name="Black Bar" enable="Y" is_premium="N" aid="3451" money="0" sharing="0" display_order="7"/>
+	<effect id="black_bar.swf" type="ANIME" resize="false" move="false" name="Black bar" enable="Y" is_premium="N" aid="3451" money="0" sharing="0" display_order="7"/>
 	<effect id="earthquake" x="0" y="0" w="550" h="354" rotate="0" type="EARTHQUAKE" resize="false" move="false" name="Earthquake" enable="Y" is_premium="N" aid="3434" money="0" sharing="0" display_order="8"/>
-	<effect id="upsideDown" x="0" y="0" w="550" h="354" rotate="0" type="UPSIDEDOWN" resize="false" move="false" name="Upside Down" enable="Y" is_premium="N" aid="3435" money="0" sharing="0" display_order="9"/>
+	<effect id="upsideDown" x="0" y="0" w="550" h="354" rotate="0" type="UPSIDEDOWN" resize="false" move="false" name="Upside down" enable="Y" is_premium="N" aid="3435" money="0" sharing="0" display_order="9"/>
 	<effect id="bumpyride" x="0" y="0" w="550" h="354" rotate="0" type="BUMPYRIDE" resize="false" move="false" name="Bumpy ride" enable="Y" is_premium="N" aid="5687" money="0" sharing="0" display_order="10"/>
 	<effect id="ncc_ninja_fx01.swf" type="ANIME" resize="false" move="false" name="Focus" enable="Y" is_premium="N" aid="23190" money="0" sharing="0" display_order="10"/>
 	<effect id="ncc_ninja_fx03.swf" type="ANIME" resize="false" move="false" name="Focus" enable="Y" is_premium="N" aid="23192" money="0" sharing="0" display_order="10"/>
 	<effect id="hovering" x="0" y="0" w="550" h="354" rotate="0" type="HOVERING" resize="false" move="false" name="Hovering" enable="Y" is_premium="N" aid="5686" money="0" sharing="0" display_order="11"/>
 	<effect id="effect_grayscale" x="0" y="0" w="550" h="354" rotate="0" type="GRAYSCALE" resize="false" move="false" name="Grayscale" enable="Y" aid="6796" display_order="12" is_premium="N" money="0" sharing="0"/>
 	<effect id="effect_spedia" x="0" y="0" w="550" h="354" rotate="0" type="SEPIA" resize="false" move="false" name="Sepia" enable="Y" aid="6877" display_order="13" is_premium="N" money="0" sharing="0"/>
-	<effect id="dra" x="0" y="0" w="550" h="354" rotate="0" type="DRA" resize="false" move="false" name="Double Red Alert" enable="Y" is_premium="N" aid="5685" money="0" sharing="0" display_order="14"/>
-	<effect id="curtain_up_fx.swf" type="ANIME" resize="false" move="false" name="curtain up fx" enable="Y" aid="4002" display_order="15" is_premium="N" money="0" sharing="0"/>
-	<effect id="DV_screen.swf" type="ANIME" resize="false" move="false" name="DV Screen" enable="Y" is_premium="N" aid="3462" money="0" sharing="0" display_order="16"/>
-	<effect id="water_flood.swf" type="ANIME" resize="false" move="false" name="Water Flood" enable="Y" is_premium="N" aid="3461" money="0" sharing="0" display_order="17"/>
+	<effect id="dra" x="0" y="0" w="550" h="354" rotate="0" type="DRA" resize="false" move="false" name="Double red alert" enable="Y" is_premium="N" aid="5685" money="0" sharing="0" display_order="14"/>
+	<effect id="curtain_up_fx.swf" type="ANIME" resize="false" move="false" name="Curtain up" enable="Y" aid="4002" display_order="15" is_premium="N" money="0" sharing="0"/>
+	<effect id="DV_screen.swf" type="ANIME" resize="false" move="false" name="DV screen" enable="Y" is_premium="N" aid="3462" money="0" sharing="0" display_order="16"/>
+	<effect id="water_flood.swf" type="ANIME" resize="false" move="false" name="Water flood" enable="Y" is_premium="N" aid="3461" money="0" sharing="0" display_order="17"/>
 	<effect id="bomb.swf" type="ANIME" resize="false" move="false" name="Bomb" enable="Y" is_premium="N" aid="3460" money="0" sharing="0" display_order="18"/>
 	<effect id="ppl01.swf" type="ANIME" resize="false" move="false" name="People" enable="Y" is_premium="N" aid="3459" money="0" sharing="0" display_order="19"/>
 	<effect id="aud-banner.swf" type="ANIME" resize="false" move="false" name="Banner" enable="Y" is_premium="N" aid="3448" money="0" sharing="0" display_order="20"/>
@@ -19685,28 +19685,28 @@
 	<effect id="aud-01.swf" type="ANIME" resize="false" move="false" name="Auditorium" enable="Y" is_premium="N" aid="3447" money="0" sharing="0" display_order="22"/>
 	<effect id="aud_clap_dark.swf" type="ANIME" resize="false" move="false" name="Crowd" enable="Y" is_premium="N" aid="10796" money="0" sharing="0" display_order="23"/>
 	<effect id="crowd_music.swf" type="ANIME" resize="false" move="false" name="Crowd cheer" enable="Y" is_premium="N" aid="10900" money="0" sharing="0" display_order="24"/>
-	<effect id="flash_light01.swf" type="ANIME" resize="false" move="false" name="Flash Light" enable="Y" is_premium="N" aid="3456" money="0" sharing="0" display_order="25"/>
-	<effect id="green_screen.swf" type="ANIME" resize="false" move="false" name="Green Screen" enable="Y" is_premium="N" aid="3458" money="0" sharing="0" display_order="25"/>
-	<effect id="gnn_news.swf" type="ANIME" resize="false" move="false" name="GNN News" enable="Y" is_premium="N" aid="3457" money="0" sharing="0" display_order="26"/>
+	<effect id="flash_light01.swf" type="ANIME" resize="false" move="false" name="Flashlight" enable="Y" is_premium="N" aid="3456" money="0" sharing="0" display_order="25"/>
+	<effect id="green_screen.swf" type="ANIME" resize="false" move="false" name="Green screen" enable="Y" is_premium="N" aid="3458" money="0" sharing="0" display_order="25"/>
+	<effect id="gnn_news.swf" type="ANIME" resize="false" move="false" name="GNN news" enable="Y" is_premium="N" aid="3457" money="0" sharing="0" display_order="26"/>
 	<effect id="black_all.swf" type="ANIME" resize="false" move="false" name="Darkness" enable="Y" is_premium="N" aid="3450" money="0" sharing="0" display_order="27"/>
-	<effect id="blue_screen.swf" type="ANIME" resize="false" move="false" name="Blue Screen" enable="Y" is_premium="N" aid="3452" money="0" sharing="0" display_order="29"/>
-	<effect id="atomic-bomb.swf" type="ANIME" resize="false" move="false" name="Atomic Bomb" enable="Y" is_premium="N" aid="3446" money="0" sharing="0" display_order="30"/>
+	<effect id="blue_screen.swf" type="ANIME" resize="false" move="false" name="Blue screen" enable="Y" is_premium="N" aid="3452" money="0" sharing="0" display_order="29"/>
+	<effect id="atomic-bomb.swf" type="ANIME" resize="false" move="false" name="Atomic bomb" enable="Y" is_premium="N" aid="3446" money="0" sharing="0" display_order="30"/>
 	<effect id="hearts.swf" type="ANIME" resize="false" move="false" name="Heart" enable="Y" is_premium="N" aid="3445" money="0" sharing="0" display_order="31"/>
-	<effect id="old_film_effect.swf" type="ANIME" resize="false" move="false" name="Old Film" enable="Y" is_premium="N" aid="3444" money="0" sharing="0" display_order="32"/>
-	<effect id="old_film_effect_04.swf" type="ANIME" resize="false" move="false" name="Old Film" enable="Y" is_premium="N" aid="9818" money="0" sharing="0" display_order="32"/>
+	<effect id="old_film_effect.swf" type="ANIME" resize="false" move="false" name="Old film" enable="Y" is_premium="N" aid="3444" money="0" sharing="0" display_order="32"/>
+	<effect id="old_film_effect_04.swf" type="ANIME" resize="false" move="false" name="Old film" enable="Y" is_premium="N" aid="9818" money="0" sharing="0" display_order="32"/>
 	<effect id="snow02.swf" type="ANIME" resize="false" move="false" name="Snow" enable="Y" is_premium="N" aid="3443" money="0" sharing="0" display_order="33"/>
 	<effect id="snow.swf" type="ANIME" resize="false" move="false" name="Snow" enable="Y" is_premium="N" aid="3440" money="0" sharing="0" display_order="34"/>
 	<effect id="snow01.swf" type="ANIME" resize="false" move="false" name="Snow" enable="Y" is_premium="N" aid="3442" money="0" sharing="0" display_order="34"/>
-	<effect id="hyper_snow.swf" type="ANIME" resize="false" move="false" name="Hyper Snow" enable="Y" is_premium="N" aid="3441" money="0" sharing="0" display_order="35"/>
+	<effect id="hyper_snow.swf" type="ANIME" resize="false" move="false" name="Hyper snow" enable="Y" is_premium="N" aid="3441" money="0" sharing="0" display_order="35"/>
 	<effect id="lightening.swf" type="ANIME" resize="false" move="false" name="Lightning" enable="Y" is_premium="N" aid="3439" money="0" sharing="0" display_order="37"/>
 	<effect id="fire.swf" type="ANIME" resize="false" move="false" name="BBQ" enable="Y" is_premium="N" aid="3438" money="0" sharing="0" display_order="38"/>
-	<effect id="firespring" x="0" y="0" w="550" h="354" rotate="0" type="FIRESPRING" resize="false" move="false" name="Fire Spring" enable="Y" is_premium="N" aid="3437" money="0" sharing="0" display_order="39"/>
+	<effect id="firespring" x="0" y="0" w="550" h="354" rotate="0" type="FIRESPRING" resize="false" move="false" name="Fire spring" enable="Y" is_premium="N" aid="3437" money="0" sharing="0" display_order="39"/>
 	<effect id="firework" x="0" y="0" w="550" h="354" rotate="0" type="FIREWORK" resize="false" move="false" name="Firework" enable="Y" is_premium="N" aid="3436" money="0" sharing="0" display_order="40"/>
 	<effect id="ncc_fx_06.swf" type="ANIME" resize="false" move="false" name="Spotlight" enable="Y" is_premium="N" aid="12364" money="0" sharing="0" display_order="41"/>
 	<effect id="ncc_fx_07.swf" type="ANIME" resize="false" move="false" name="Focus" enable="Y" is_premium="N" aid="12365" money="0" sharing="0" display_order="42"/>
 	<effect id="ncc_fx_camera.swf" type="ANIME" resize="false" move="false" name="Camera" enable="Y" is_premium="N" aid="12469" money="0" sharing="0" display_order="43"/>
-	<effect id="ncc_fx_camera_shoot2.swf" type="ANIME" resize="false" move="false" name="Camera - Take Picture" enable="Y" is_premium="N" aid="12470" money="0" sharing="0" display_order="44"/>
-	<effect id="ncc_fx_camera2.swf" type="ANIME" resize="false" move="false" name="Digital Camera" enable="Y" is_premium="N" aid="12471" money="0" sharing="0" display_order="45"/>
+	<effect id="ncc_fx_camera_shoot2.swf" type="ANIME" resize="false" move="false" name="Camera - Take picture" enable="Y" is_premium="N" aid="12470" money="0" sharing="0" display_order="44"/>
+	<effect id="ncc_fx_camera2.swf" type="ANIME" resize="false" move="false" name="Digital camera" enable="Y" is_premium="N" aid="12471" money="0" sharing="0" display_order="45"/>
 	<effect id="ncc_fx_nightvision.swf" type="ANIME" resize="false" move="false" name="Night vision goggles" enable="Y" is_premium="N" aid="12472" money="0" sharing="0" display_order="46"/>
 	<effect id="ncc_fx_sniper.swf" type="ANIME" resize="false" move="false" name="Target" enable="Y" is_premium="N" aid="12473" money="0" sharing="0" display_order="47"/>
 	<effect id="ncc_fx_sniper_fire.swf" type="ANIME" resize="false" move="false" name="Target - Shoot" enable="Y" is_premium="N" aid="12474" money="0" sharing="0" display_order="48"/>
@@ -19722,9 +19722,9 @@
 	<effect id="ncc_opening02.swf" type="ANIME" resize="false" move="false" name="Metal doors - opening" enable="Y" is_premium="N" aid="12333" money="0" sharing="0" display_order="205"/>
 	<effect id="ncc_ending02.swf" type="ANIME" resize="false" move="false" name="Metal doors - game over" enable="Y" is_premium="N" aid="12334" money="0" sharing="0" display_order="206"/>
 	<effect id="ncc_ending02b.swf" type="ANIME" resize="false" move="false" name="Metal doors - closing" enable="Y" is_premium="N" aid="12335" money="0" sharing="0" display_order="207"/>
-	<effect id="fadeInEx" x="0" y="0" w="550" h="354" rotate="0" type="FADING" resize="false" move="false" name="Fade In" enable="Y" isIn="true" is_premium="N" money="0" sharing="0" aid="9816" display_order="1001"/>
-	<effect id="fadeOutEx" x="0" y="0" w="550" h="354" rotate="0" type="FADING" resize="false" move="false" name="Fade Out" enable="Y" isOut="true" is_premium="N" money="0" sharing="0" aid="9817" display_order="1002"/>
-	<effect id="circle_fade_out.swf" type="ANIME" resize="false" move="false" name="Circle Fade Out" enable="Y" is_premium="N" aid="3453" money="0" sharing="0" display_order="1002"/>
+	<effect id="fadeInEx" x="0" y="0" w="550" h="354" rotate="0" type="FADING" resize="false" move="false" name="Fade in" enable="Y" isIn="true" is_premium="N" money="0" sharing="0" aid="9816" display_order="1001"/>
+	<effect id="fadeOutEx" x="0" y="0" w="550" h="354" rotate="0" type="FADING" resize="false" move="false" name="Fade out" enable="Y" isOut="true" is_premium="N" money="0" sharing="0" aid="9817" display_order="1002"/>
+	<effect id="circle_fade_out.swf" type="ANIME" resize="false" move="false" name="Circle fade out" enable="Y" is_premium="N" aid="3453" money="0" sharing="0" display_order="1002"/>
 	<effect id="ncc_transition03.swf" type="ANIME" resize="false" move="false" name="Transition in - vertical squares" enable="Y" is_premium="N" aid="12336" money="0" sharing="0" display_order="1010"/>
 	<effect id="ncc_transition03b.swf" type="ANIME" resize="false" move="false" name="Transition out - vertical squares" enable="Y" is_premium="N" aid="12337" money="0" sharing="0" display_order="1011"/>
 	<effect id="ncc_transition04.swf" type="ANIME" resize="false" move="false" name="Transition in - horizontal squares" enable="Y" is_premium="N" aid="12338" money="0" sharing="0" display_order="1012"/>
